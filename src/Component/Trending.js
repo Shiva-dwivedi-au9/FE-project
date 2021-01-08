@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import  '../Main.css'
+import StarRatings from 'react-star-ratings';
 import loader from '../Images/loader.gif'
 const TrendingUrl = "https://api.themoviedb.org/3/trending/all/day?api_key=76a3351cce68be3d7eaa350f43ad5644"
 const ImgUrl = "https://image.tmdb.org/t/p/w300"
@@ -24,7 +25,15 @@ export default class Trending extends Component {
                 <div style={{margin:"55px"}}>
                     <h4><span style={{color:"teal",fontSize:"20px"}}>Popularity : </span>  {item.popularity}</h4> 
                     <h4><span style={{color:"teal",fontSize:"20px"}}>Release Date : </span> {item.release_date} {item.first_air_date}</h4>
-                    <h4><span style={{color:"teal",fontSize:"20px"}}>Vote Average: </span>  {item.vote_average} </h4> 
+                    <h4><span style={{color:"teal",fontSize:"20px"}}>Vote Average: </span> </h4> 
+                    <StarRatings
+                        rating={item.vote_average}
+                        starRatedColor="blue"
+                        numberOfStars={10}
+                        name='rating'
+                        starDimension="25px"
+                        starSpacing="2px"
+                  />
                     <h4><span style={{color:"teal",fontSize:"20px"}}>Vote Count : </span>{item.vote_count} </h4>
                 </div>
               

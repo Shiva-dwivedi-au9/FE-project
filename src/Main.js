@@ -9,8 +9,8 @@ export default function Main() {
     <div>
       <Tabs>
           <TabList>
-                <Tab>Home</Tab>
-                <Tab>Trending</Tab>
+                <Tab style={{fontSize:"25px",fontWeight:"bold"}}>Movies</Tab>
+                <Tab  style={{fontSize:"25px",fontWeight:"bold"}}>Trending</Tab>
           </TabList>
 
           <TabPanel>

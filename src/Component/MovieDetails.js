@@ -1,4 +1,9 @@
 import React, { Component } from 'react'
+import SimilarMovies from './SimilarMovies'
+import Movies from './RecommendedMovies'
+import Credit from './MovieCredits'
+import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+import 'react-tabs/style/react-tabs.css';
 
 const api_key = "api_key=76a3351cce68be3d7eaa350f43ad5644"
 const TrailerUrl = "https://api.themoviedb.org/3/movie/"
@@ -36,6 +41,25 @@ export default class MovieDetails extends Component {
             <div>
                 {this.renderDetails(this.state.details)}
                 <button onClick={this.handleBack}>Go back</button>
+                
+                <Tabs>
+                    <TabList>
+                            <Tab  style={{fontSize:"25px",fontWeight:"bold"}}>Cast</Tab>
+                            <Tab style={{fontSize:"25px",fontWeight:"bold"}}>Similar Movies</Tab>
+                            <Tab  style={{fontSize:"25px",fontWeight:"bold"}}>Recommended Movies</Tab>
+
+                    </TabList>
+
+                    <TabPanel>
+                    <Credit />
+                    </TabPanel>
+                    <TabPanel>
+                            <SimilarMovies />
+                    </TabPanel>
+                    <TabPanel>
+                          <Movies />
+                    </TabPanel>
+                </Tabs>
             </div>
         )
     }

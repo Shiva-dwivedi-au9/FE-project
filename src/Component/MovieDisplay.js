@@ -1,5 +1,6 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
+import StarRatings from 'react-star-ratings';
 import '../Main.css'
 const ImgUrl = "https://image.tmdb.org/t/p/w300"
  
@@ -23,7 +24,15 @@ export default function MovieDisplay(props) {
                             <p style={{marginTop:"50px",fontSize:"20px",fontWeight:'bold'}}>
                                 <p style={{color:"green"}}>{item.overview}</p>
                                 <h4>Popularity : {item.popularity}</h4>
-                                <h4>Vote Average : {item.vote_average}</h4>
+                                <h4><span style={{color:"teal",fontSize:"20px"}}>Vote Average: </span> </h4> 
+                                <StarRatings
+                                    rating={item.vote_average}
+                                    starRatedColor="blue"
+                                    numberOfStars={10}
+                                    name='rating'
+                                    starDimension="40px"
+                                    starSpacing="10px"
+                            />
                                 <h4>Vote Count : {item.vote_count}</h4>
                                 <h4>Release Date : {item.release_date}{item.first_air_date}</h4>
                                 <button onClick={viewMore} value={item.id}><Link to={`/details/${item.id}`}>View</Link></button>

@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import MovieDisplay from './Component/MovieDisplay'
 
-const MovieUrl = "https://api.themoviedb.org/3/search/multi?api_key=76a3351cce68be3d7eaa350f43ad5644&language=en-US&page=1&include_adult=false&query="
-const DefaultUrl = "https://api.themoviedb.org/3/search/multi?api_key=76a3351cce68be3d7eaa350f43ad5644&language=en-US&page=1&include_adult=false&query=_"
+const MovieUrl = "https://api.themoviedb.org/3/search/movie?api_key=76a3351cce68be3d7eaa350f43ad5644&language=en-US&page=1&include_adult=false&query="
+const DefaultUrl = "https://api.themoviedb.org/3/search/movie?api_key=76a3351cce68be3d7eaa350f43ad5644&language=en-US&page=1&include_adult=false&query=&query=_"
 let url
 export default class Search extends Component {
 
