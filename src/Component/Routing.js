@@ -3,7 +3,9 @@ import {BrowserRouter , Route} from 'react-router-dom'
 import Header from './Header'
 import Footer from './Footer'
 import Contact from './Contact'
-import App from '../App'
+import Home from '../Main'
+import Trending from './Trending'
+import MovieDetails from './MovieDetails'
 
 export default function Routing() {
     return (
@@ -11,9 +13,12 @@ export default function Routing() {
             <BrowserRouter>
                 <Header/>
 
-                    <Route exact path="/" component={App} />
+                    <Route exact path="/" component={Home} />
                     <Route path="/contact" component={Contact} />
-                <Footer year="2020" month="DEC" date="21" />
+                    <Route path="/trending" component={Trending} />
+                    <Route path="/details/:id" component={MovieDetails} />
+
+                <Footer year="2021" month="JAN"  />
             </BrowserRouter>
             
         </div>

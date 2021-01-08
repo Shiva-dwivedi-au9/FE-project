@@ -1,9 +1,11 @@
 import React, { Component } from 'react'
 import Search from  './Search'
+import './Main.css'
 
 const GenreUrl = "https://api.themoviedb.org/3/genre/movie/list?api_key=76a3351cce68be3d7eaa350f43ad5644&language=en-US"
-const TrendingUrl = "https://api.themoviedb.org/3/trending/all/day?api_key=76a3351cce68be3d7eaa350f43ad5644"
+const GenreDetailUrl = "https://api.themoviedb.org/3/discover/movie?api_key=76a3351cce68be3d7eaa350f43ad5644&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_genres="
 const ImgUrl = "https://image.tmdb.org/t/p/w300"
+
 
 export default class App extends Component {
 
@@ -11,62 +13,65 @@ export default class App extends Component {
     super()
     this.state = {
         genre:"",
-        trending:""
+        genreDetail:""
     }
   }
-
+  renderMovies = (data) => {
+    if(data){
+      return data.results.map((item) => {
+        console.log("see",data.results)
+        return(
+          < div style={{backgroundColor:' rgba(12, 4, 12, 0.900)',backdropFilter:'blur(5px)',margin:"10px",width:"400px"}} >
+                 <h2 style={{color:"green",textAlign:"center"}} key={item.id}>||| {item.original_name}{item.title} |||</h2>
+                <img style={{margin:"30px",padding:"20px"}} src={`${ImgUrl}/${item.poster_path}`}></img>
+          </ div>
+        )
+      })
+    }
+  }
   renderGenre = (data) => {
     if(data){
-      console.log(data)
+      
       return data.genres.map((item) =>{
+       this. handleGenre=(e) => {
+          sessionStorage.setItem("genreid",item.id)
+          const _id = sessionStorage.getItem("genreid")
+        
+          const  FinalURL = GenreDetailUrl  + _id
+          
+          fetch(FinalURL)
+          .then((res)=>res.json())
+          .then((data) => this.setState({genreDetail:data}))
+        }
+       
           return(
-             <h3 style={{padding:"10px",color:"teal"}} key={item.id}>{item.name}</h3>
+            <div className="myButton" style={{backgroundColor:' rgba(12, 4, 12, 0.900)',backdropFilter:'blur(5px)',margin:"9px",width:"150px",cursor:"pointer",borderRadius:"50px"}}>
+                  <h3 onClick={this.handleGenre} style={{padding:"10px",color:"teal"}} key={item.id} value={item.id}>{item.name}</h3>
+            </div>
+             
           )
       })
   }
   }
+  
 
-  renderTrending=(data) => {
-    if(data){
-      return data.results.map((item) => {
-        return(
-          < div >
-             <h2 style={{color:"green",textAlign:"center"}} key={item.id}>||| {item.original_name}{item.title} |||</h2>
-            <img style={{margin:"30px"}} src={`${ImgUrl}/${item.poster_path}`}></img>
-            <div style={{margin:"30px"}}>
-                <h4><span style={{color:"teal",fontSize:"20px"}}>Popularity : </span>  {item.popularity}</h4> 
-                <h4><span style={{color:"teal",fontSize:"20px"}}>Release Date : </span> {item.release_date} {item.first_air_date}</h4>
-                <h4><span style={{color:"teal",fontSize:"20px"}}>Vote Average: </span>  {item.vote_average} </h4> 
-                <h4><span style={{color:"teal",fontSize:"20px"}}>Vote Count : </span>{item.vote_count} </h4>
-            </div>
-          
-          </ div>
-         
-        )
-      })
-
-    }
-  }
   render() {
-    console.log(this.state.genre)
-    console.log("trending",this.state.trending)
+  console.log("genredata" , this.state.genreDetail)
     return (
       
-      <div>
+      <div className="main-container">
           <Search />
-          <h1>GENRE</h1>
-          <div style={{display:"flex",flexWrap:"wrap"}}>
-           {this.renderGenre(this.state.genre)}
-          </div>
 
-          <div >
-            <h1>TRENDING</h1>
-            <div  style={{display:"flex",flexWrap:"wrap"}}>
-                  {this.renderTrending(this.state.trending)}
-            </div>
-          </div>          
+          <h1 style={{textAlign:"center"}}>GENRE</h1>
+          <div style={{display:"flex",flexWrap:"wrap",backgroundColor:' rgba(12, 4, 12, 0.719)',backdropFilter:'blur(5px)',textAlign:"center"}}>
+           {this.renderGenre(this.state.genre)}
+          </div> 
+
+          <h2 style={{textAlign:"center"}}>Get results by Genre here</h2>
+          <div style={{display:"flex",flexWrap:"wrap",backgroundColor:' rgba(12, 4, 12, 0.719)',backdropFilter:'blur(5px)'}} >
+              {this.renderMovies(this.state.genreDetail)}
+          </div>
          
-          
       </div>
     )
   }
@@ -76,12 +81,9 @@ export default class App extends Component {
     .then((data) => {
         this.setState({genre:data})
     })
+}
+}
 
-    fetch(TrendingUrl)
-    .then((res)=>res.json())
-    .then((data) => {
-      this.setState({trending:data})
-  })
-}
-}
+
+
 

@@ -1,4 +1,6 @@
 import React from 'react'
+import {Link} from 'react-router-dom'
+import '../Main.css'
 const ImgUrl = "https://image.tmdb.org/t/p/w300"
  
 
@@ -7,26 +9,50 @@ export default function MovieDisplay(props) {
     const renderMovies = ({display}) => {
         if(display) {
                 return display.results.map((item) => {
+                    const  viewMore = (e) =>{
+                        console.log(item.id);
+                        console.log(e.target.value)
+                        sessionStorage.setItem("id",item.id)
+                        console.log(sessionStorage.getItem("id"))
+                    }
                   return(
-                    < div >
-                        <h3>{item.title} {item.original_name}</h3>                   
-                        <img style={{margin:"30px"}} src={`${ImgUrl}/${item.poster_path}`} alt="pic not available"></img>
+                    < div style={{background:"burlywood",margin:"20px",width:"100%",backgroundColor:' rgba(12, 4, 12, 0.719)',backdropFilter:'blur(5px)'}} >
+                        <h2 style={{marginLeft:"30px",color:"teal",fontSize:"40px"}}>{item.title} {item.original_name}</h2>   
+                        <div style={{display:"flex"}}>
+                            <img style={{margin:"30px"}} src={`${ImgUrl}/${item.poster_path}`} alt="pic not available"></img>
+                            <p style={{marginTop:"50px",fontSize:"20px",fontWeight:'bold'}}>
+                                <p style={{color:"green"}}>{item.overview}</p>
+                                <h4>Popularity : {item.popularity}</h4>
+                                <h4>Vote Average : {item.vote_average}</h4>
+                                <h4>Vote Count : {item.vote_count}</h4>
+                                <h4>Release Date : {item.release_date}{item.first_air_date}</h4>
+                                <button onClick={viewMore} value={item.id}><Link to={`/details/${item.id}`}>View</Link></button>
+                            </p>
+
+                        </div>                
+                        
                     </ div>
                    
                   )
+                 
                 })
           
         }
         else{
             return(
-                <>Sorry try something else</>
+                <div style={{textAlign:"center"}}>Sorry try something else</div>
             )
         }
+
+     
     }
+   
     return (
-        <div>
-            <h1>Search Results</h1>
-            {renderMovies(props)}
+        <div >
+            <h1 style={{textAlign:"center"}}>Search Results</h1>
+            <div   style={{display:"flex",flexWrap:"wrap"}}>
+                   {renderMovies(props)}
+            </div>
         </div>
     )
 }

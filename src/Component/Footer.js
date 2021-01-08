@@ -2,8 +2,8 @@ import React from 'react'
 
 export default function Footer(props) {
     return (
-        <div>
-            <h1>Footer {props.year} {props.month} {props.date} </h1>
+        <div style={{backgroundColor:' rgba(12, 4, 12, 0.719)',backdropFilter:'blur(5px)',color:'white',textAlign:"center"}}>
+            <h1>Daily Movie Mania {props.year} {props.month}</h1>
         </div>
     )
 }

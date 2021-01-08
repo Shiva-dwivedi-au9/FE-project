@@ -1,12 +1,10 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
+import "../Main.css"
 
 export default function Header() {
     return (
-        <div>
-            <h1>Header</h1>
-            <Link to="/">Home</Link>
-            <Link to="/contact">Contact</Link>
+        <div style={{backgroundColor:' rgba(12, 4, 12, 0.719)',backdropFilter:'blur(5px)',color:'white'}}>
+            <h1 style={{textAlign:"center"}}>Daily Movie Mania</h1>         
         </div>
     )
 }
