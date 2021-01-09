@@ -1,6 +1,10 @@
 import React, { Component } from 'react'
 import Search from  './Search'
 import './Main.css'
+import {Link} from 'react-router-dom'
+import {Spring} from 'react-spring/renderprops'
+import {Transition} from 'react-spring/renderprops'
+
 
 const GenreUrl = "https://api.themoviedb.org/3/genre/movie/list?api_key=76a3351cce68be3d7eaa350f43ad5644&language=en-US"
 const GenreDetailUrl = "https://api.themoviedb.org/3/discover/movie?api_key=76a3351cce68be3d7eaa350f43ad5644&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_genres="
@@ -20,11 +24,22 @@ export default class App extends Component {
     if(data){
       return data.results.map((item) => {
         console.log("see",data.results)
+        const  viewMore = (e) =>{
+          sessionStorage.setItem("id",item.id)
+      }
         return(
-          < div style={{backgroundColor:' rgba(12, 4, 12, 0.900)',backdropFilter:'blur(5px)',margin:"10px",width:"400px"}} >
-                 <h2 style={{color:"green",textAlign:"center"}} key={item.id}>||| {item.original_name}{item.title} |||</h2>
-                <img style={{margin:"30px",padding:"20px"}} src={`${ImgUrl}/${item.poster_path}`}></img>
-          </ div>
+          <Transition
+                items={item} keys={item => item.key}
+                from={{ transform: 'translate3d(0,-40px,0)' }}
+                enter={{ transform: 'translate3d(0,0px,0)' }}
+                leave={{ transform: 'translate3d(0,-40px,0)' }}>
+                {item => props => <div style={props}>
+                      < div style={{backgroundColor:' rgba(12, 4, 12, 0.900)',backdropFilter:'blur(5px)',margin:"10px",width:"400px"}} >
+                              <h2 style={{color:"green",textAlign:"center"}} key={item.id}>||| {item.original_name}{item.title} |||</h2>
+                             <Link onClick={viewMore} to={`/details/${item.id}`}><img style={{margin:"30px",padding:"20px"}} src={`${ImgUrl}/${item.poster_path}`}></img></Link> 
+                        </ div></div>}
+          </Transition>
+         
         )
       })
     }
@@ -61,11 +76,23 @@ export default class App extends Component {
       
       <div className="main-container">
           <Search />
-
-          <h1 style={{textAlign:"center"}}>GENRE</h1>
-          <div style={{display:"flex",flexWrap:"wrap",backgroundColor:' rgba(12, 4, 12, 0.719)',backdropFilter:'blur(5px)',textAlign:"center"}}>
-           {this.renderGenre(this.state.genre)}
-          </div> 
+          <Spring
+          
+          from = { {opacity: 0}}
+          to = {{opacity: 1}}
+          config = {{ delay: 1100 ,  duration : 1000}}
+         >
+         {props =>  (
+             <div style={props}>
+             <h1 style={{textAlign:"center"}}>GENRE</h1>
+              <div style={{display:"flex",flexWrap:"wrap",backgroundColor:' rgba(12, 4, 12, 0.719)',backdropFilter:'blur(5px)',textAlign:"center"}}>
+                  {this.renderGenre(this.state.genre)}
+              </div>
+              </div>
+            )}
+            </Spring>
+         
+           
 
           <h2 style={{textAlign:"center"}}>Get results by Genre here</h2>
           <div style={{display:"flex",flexWrap:"wrap",backgroundColor:' rgba(12, 4, 12, 0.719)',backdropFilter:'blur(5px)'}} >

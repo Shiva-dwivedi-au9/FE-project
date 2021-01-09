@@ -11,10 +11,8 @@ export default function MovieDisplay(props) {
         if(display) {
                 return display.results.map((item) => {
                     const  viewMore = (e) =>{
-                        console.log(item.id);
-                        console.log(e.target.value)
                         sessionStorage.setItem("id",item.id)
-                        console.log(sessionStorage.getItem("id"))
+                        window.location.reload()
                     }
                   return(
                     < div style={{background:"burlywood",margin:"20px",width:"100%",backgroundColor:' rgba(12, 4, 12, 0.719)',backdropFilter:'blur(5px)'}} >

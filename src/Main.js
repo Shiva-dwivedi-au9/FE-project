@@ -3,6 +3,7 @@ import Trending from './Component/Trending'
 import App from './App'
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
+import $ from "jquery";
 
 export default function Main() {
   return (
