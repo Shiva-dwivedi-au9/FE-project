@@ -17,9 +17,9 @@ export default class SimilarMovies extends Component {
             const  viewMore = (e) =>{
                 sessionStorage.setItem("id",item.id)
                 window.location.reload()            }
-            console.log("see",data.results)
+        
             return(
-              < div style={{backgroundColor:' rgba(12, 4, 12, 0.900)',backdropFilter:'blur(5px)',margin:"10px",width:"400px"}} >
+              < div style={{backgroundColor:' rgba(12, 4, 12, 0.700)',backdropFilter:'blur(5px)',margin:"10px",width:"400px"}} >
                      <h2 style={{color:"green",textAlign:"center"}} key={item.id}>||| {item.original_name}{item.title} |||</h2>
                      <Link onClick={viewMore} to={`/details/${item.id}`}><img style={{margin:"30px",padding:"20px"}} src={`${ImgUrl}/${item.poster_path}`}></img></Link> 
               </ div>
@@ -28,11 +28,11 @@ export default class SimilarMovies extends Component {
         }
       }
     render() {
-        console.log("similar movies" , this.state.similar)
+   
         return (
             <div>
                 <h1>Similar Movies</h1>
-                <div style={{display:"flex",flexWrap:"wrap",backgroundColor:' rgba(12, 4, 12, 0.719)',backdropFilter:'blur(5px)'}} >
+                <div style={{display:"flex",flexWrap:"wrap",backgroundColor:' rgba(12, 4, 12, 0.719)',backdropFilter:'blur(5px)',justifyContent:"center",alignItems:"center"}} >
                 {this.renderSimilar(this.state.similar)}
                 </div>
             </div>

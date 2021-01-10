@@ -13,7 +13,7 @@ export default class CreditMovies extends Component {
     renderCredit = (data) => {
         if(data){
           return data.cast.map((item) => {
-            console.log("see",data.results)
+          
             return(
               < div style={{backgroundColor:' rgba(12, 4, 12, 0.900)',backdropFilter:'blur(5px)',margin:"10px",width:"400px"}} >
                      <h2 style={{color:"teal",textAlign:"center"}} key={item.id}>{item.name}</h2>
@@ -25,11 +25,11 @@ export default class CreditMovies extends Component {
         }
       }
     render() {
-        console.log("Credit movies" , this.state.Credit)
+     
         return (
             <div>
                 <h1>Credit</h1>
-                <div style={{display:"flex",flexWrap:"wrap",backgroundColor:' rgba(12, 4, 12, 0.719)',backdropFilter:'blur(5px)'}} >
+                <div style={{display:"flex",flexWrap:"wrap",backgroundColor:' rgba(12, 4, 12, 0.719)',backdropFilter:'blur(5px)',justifyContent:"center",alignItems:"center"}} >
                 {this.renderCredit(this.state.Credit)}
                 </div>
             </div>

@@ -30,11 +30,11 @@ export default class App extends Component {
         return(
           <Transition
                 items={item} keys={item => item.key}
-                from={{ transform: 'translate3d(0,-40px,0)' }}
+                from={{ transform: 'translate3d(0,-80px,0)' }}
                 enter={{ transform: 'translate3d(0,0px,0)' }}
-                leave={{ transform: 'translate3d(0,-40px,0)' }}>
+                leave={{ transform: 'translate3d(0,-80px,0)' }}>
                 {item => props => <div style={props}>
-                      < div style={{backgroundColor:' rgba(12, 4, 12, 0.900)',backdropFilter:'blur(5px)',margin:"10px",width:"400px"}} >
+                      < div className="responsive" style={{backgroundColor:' rgba(12, 4, 12, 0.900)',backdropFilter:'blur(5px)',margin:"10px",width:"400px",height:"600px"}} >
                               <h2 style={{color:"green",textAlign:"center"}} key={item.id}>||| {item.original_name}{item.title} |||</h2>
                              <Link onClick={viewMore} to={`/details/${item.id}`}><img style={{margin:"30px",padding:"20px"}} src={`${ImgUrl}/${item.poster_path}`}></img></Link> 
                         </ div></div>}
@@ -60,7 +60,7 @@ export default class App extends Component {
         }
        
           return(
-            <div className="myButton" style={{backgroundColor:' rgba(12, 4, 12, 0.900)',backdropFilter:'blur(5px)',margin:"9px",width:"150px",cursor:"pointer",borderRadius:"50px"}}>
+            <div className="myButton" style={{backgroundColor:' rgba(12, 4, 12, 0.900)',backdropFilter:'blur(5px)',margin:"9px",width:"150px",cursor:"pointer",borderRadius:"50px",textAlign:"center"}}>
                   <h3 onClick={this.handleGenre} style={{padding:"10px",color:"teal"}} key={item.id} value={item.id}>{item.name}</h3>
             </div>
              
@@ -85,7 +85,7 @@ export default class App extends Component {
          {props =>  (
              <div style={props}>
              <h1 style={{textAlign:"center"}}>GENRE</h1>
-              <div style={{display:"flex",flexWrap:"wrap",backgroundColor:' rgba(12, 4, 12, 0.719)',backdropFilter:'blur(5px)',textAlign:"center"}}>
+              <div style={{display:"flex",flexWrap:"wrap",backgroundColor:' rgba(12, 4, 12, 0.719)',backdropFilter:'blur(5px)',justifyContent:"center",alignItems:"center"}}>
                   {this.renderGenre(this.state.genre)}
               </div>
               </div>
@@ -95,7 +95,7 @@ export default class App extends Component {
            
 
           <h2 style={{textAlign:"center"}}>Get results by Genre here</h2>
-          <div style={{display:"flex",flexWrap:"wrap",backgroundColor:' rgba(12, 4, 12, 0.719)',backdropFilter:'blur(5px)'}} >
+          <div style={{display:"flex",flexWrap:"wrap",backgroundColor:' rgba(12, 4, 12, 0.719)',backdropFilter:'blur(5px)',justifyContent:"center",alignItems:"center"}} >
               {this.renderMovies(this.state.genreDetail)}
           </div>
          
