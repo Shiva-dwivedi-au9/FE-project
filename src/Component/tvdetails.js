@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
-import SimilarMovies from './SimilarMovies'
-import Movies from './RecommendedMovies'
-import Credit from './MovieCredits'
+import Credit from './tvcredits'
+import Similer from './similerseries'
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import StarRatings from 'react-star-ratings';
@@ -9,11 +8,11 @@ import ModalVideo from 'react-modal-video'
 import '../Modal.scss'
 
 const api_key = "api_key=76a3351cce68be3d7eaa350f43ad5644"
-const TrailerUrl = "https://api.themoviedb.org/3/movie/"
+const TrailerUrl = "https://api.themoviedb.org/3/tv/"
 const YoutubeUrl = "https://www.youtube.com/embed/"
 const ImgUrl = "https://image.tmdb.org/t/p/w300"
 
-export default class MovieDetails extends Component {
+export default class Tv extends Component {
     constructor(){
         super()
         this.state = {
@@ -30,7 +29,7 @@ export default class MovieDetails extends Component {
         renderDetails = (moreDetails) => {
             
             if(moreDetails) {
-               const key = sessionStorage.getItem("itemKey")
+               const key = sessionStorage.getItem("tvkey")
                
               return(
                   <div>
@@ -63,7 +62,7 @@ export default class MovieDetails extends Component {
             if(videos) {
                 
                 return videos.results.map((item) => {
-                    sessionStorage.setItem("itemKey",item.key)
+                    sessionStorage.setItem("tvkey",item.key)
                     return(
                         <div style={{textAlign:'center'}}>
                             <h1>Name : {item.name}</h1>
@@ -90,23 +89,18 @@ export default class MovieDetails extends Component {
                 <Tabs>
                     <TabList>
                             <Tab  style={{fontSize:"25px",fontWeight:"bold"}}>Cast</Tab>
-                            <Tab style={{fontSize:"25px",fontWeight:"bold"}}>Similar Movies</Tab>
-                            <Tab  style={{fontSize:"25px",fontWeight:"bold"}}>Recommended Movies</Tab>
-                            <Tab  style={{fontSize:"25px",fontWeight:"bold"}}>Videos</Tab>
-
+                            <Tab style={{fontSize:"25px",fontWeight:"bold"}}>Trailers and Bloopers</Tab>
+                            <Tab style={{fontSize:"25px",fontWeight:"bold"}}>Similer Tv seies</Tab>
                     </TabList>
 
                     <TabPanel>
                     <Credit />
                     </TabPanel>
                     <TabPanel>
-                            <SimilarMovies />
-                    </TabPanel>
-                    <TabPanel>
-                          <Movies />
-                    </TabPanel>
-                    <TabPanel>
                           {this.renderVideos(this.state.videos)}
+                    </TabPanel>
+                    <TabPanel>
+                          <Similer />
                     </TabPanel>
                 </Tabs>
             </div>

@@ -10,7 +10,7 @@ body{
     left: 0;
     bottom: 0;
     right: 0;
-    opacity: 0.93;
+    /* opacity: 0.93; */
 }
 
 .main-container{
@@ -30,7 +30,7 @@ body{
     
 }
 input{
-    width: 700px;
+    width: 50%;
     font-size: 30px;
     text-align: center;
     border-radius: 20px;
@@ -56,6 +56,13 @@ button{
     color: white;
 }
 .trending h1{
+    text-align: center;
+    color: whitesmoke;
+}
+.tv h4{
+    color: white;
+}
+.tv h1{
     text-align: center;
     color: whitesmoke;
 }
@@ -97,4 +104,17 @@ h1{
     background: #3284aa; 
     color: white;
     border-radius: 50px;
+  }
+
+  @media only screen and (max-width:800px) {
+    .responsive {
+         width: 100%;
+         padding: 0;
+    }
+    
+  }
+  @media only screen and (max-width:500px) {
+    .responsive{
+      width: 100%;
+    }
   }

@@ -3,7 +3,8 @@ import Trending from './Component/Trending'
 import App from './App'
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
-import $ from "jquery";
+import Tv from './Component/tv'
+
 
 export default function Main() {
   return (
@@ -12,6 +13,7 @@ export default function Main() {
           <TabList>
                 <Tab style={{fontSize:"25px",fontWeight:"bold"}}>Movies</Tab>
                 <Tab  style={{fontSize:"25px",fontWeight:"bold"}}>Trending</Tab>
+                <Tab  style={{fontSize:"25px",fontWeight:"bold"}}>Tv-series</Tab>
           </TabList>
 
           <TabPanel>
@@ -19,6 +21,9 @@ export default function Main() {
           </TabPanel>
           <TabPanel>
                 <Trending />
+          </TabPanel>
+          <TabPanel>
+                <Tv />
           </TabPanel>
   </Tabs>
     </div>

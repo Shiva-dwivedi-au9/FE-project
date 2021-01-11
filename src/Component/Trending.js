@@ -15,7 +15,7 @@ export default class Trending extends Component {
             trending:""
         }
       }
-
+      
       renderTrending=(data) => {
         if(data){
           return data.results.map((item) => {
@@ -23,7 +23,7 @@ export default class Trending extends Component {
               sessionStorage.setItem("id",item.id)  
             }
             return(
-              < div style={{backgroundColor:' rgba(12, 4, 12, 0.900)',backdropFilter:'blur(5px)',margin:"10px"}} >
+              < div className="responsive" style={{backgroundColor:' rgba(12, 4, 12, 0.900)',backdropFilter:'blur(5px)',margin:"10px",width:"400px",height:"100%"}} >
                  <h2 style={{color:"green",textAlign:"center"}} key={item.id}>||| {item.original_name}{item.title} |||</h2>
                 <Link onClick={viewMore} to={`/details/${item.id}`}><img style={{margin:"30px",padding:"20px"}} src={`${ImgUrl}/${item.poster_path}`}></img></Link> 
                 <div style={{margin:"55px"}}>
@@ -59,7 +59,7 @@ export default class Trending extends Component {
         return (
             <div className="trending">
                      <h1>TRENDING</h1>
-                     <div  style={{display:"flex",flexWrap:"wrap"}}>
+                     <div  style={{display:"flex",flexWrap:"wrap",justifyContent:"center",alignItems:"center"}}>
                     {this.renderTrending(this.state.trending)}
             </div>
             </div>

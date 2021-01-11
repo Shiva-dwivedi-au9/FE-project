@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 import {Link} from 'react-router-dom'
-const SimilarMoviesURL = "https://api.themoviedb.org/3/movie/"
+const SimilarMoviesURL = "https://api.themoviedb.org/3/tv/"
 const url2 = "/similar?api_key=76a3351cce68be3d7eaa350f43ad5644&language=en-US&page=1"
 const ImgUrl = "https://image.tmdb.org/t/p/w300"
 
-export default class SimilarMovies extends Component {
-    constructor(){
+export default class Similarseries extends Component {
+constructor(){
         super()
         this.state = {
             similar : ""
