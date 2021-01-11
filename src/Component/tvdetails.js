@@ -40,7 +40,9 @@ export default class Tv extends Component {
                       <div style={{display:"block"}}>
                             <h2 style={{color:"turquoise",fontSize:"30px"}}>{moreDetails.tagline}</h2>
                             <h1>{moreDetails.original_title}</h1>
-                            <h2 style={{color:"teal",fontWeight:"bold"}}><span style={{color:"silver"}}>Runtime : </span>{moreDetails.runtime} mins</h2>
+                            <h2 style={{color:"white"}}>Release Date: {moreDetails.first_air_date}</h2>
+                            <h2 style={{color:"teal",fontWeight:"bold"}}><span style={{color:"silver"}}>Runtime : </span>{moreDetails.episode_run_time} mins</h2>
+                            
                             <StarRatings
                                     rating={moreDetails.vote_average}
                                     starRatedColor="blue"
@@ -48,16 +50,21 @@ export default class Tv extends Component {
                                     name='rating'
                                     starDimension="40px"
                                     starSpacing="10px"
-                            />
+                                    />
                             <p style={{color:"teal",fontSize:"20px",fontWeight:"bold"}}>{moreDetails.overview}</p>
-                           
+                  <h2 style={{color:"white",fontWeight:"bold"}}>Total Seasons: {moreDetails.number_of_seasons}</h2>
+                  <h2 style={{color:"white",fontWeight:"bold"}}>Total Episodes: {moreDetails.number_of_episodes}</h2>
                       </div>
+                                   
                   </div>
+                  <img style={{margin:"30px"}} src={`${ImgUrl}/${moreDetails.backdrop_path}`} alt="pic not available"></img>
+            
+                  
                   </div>
               )
             }
         }
-
+        
         renderVideos =(videos) => {
             if(videos) {
                 
@@ -72,16 +79,16 @@ export default class Tv extends Component {
                     )
                 })
             }
-    
+            
         }
-    handleBack = (e) => {
-        sessionStorage.removeItem("id")
-        this.props.history.push("/")
-    }
-    render() {
-        console.log(this.state.moreDetails)
-        return (
-            <div>
+        handleBack = (e) => {
+            sessionStorage.removeItem("id")
+            this.props.history.push("/")
+        }
+        render() {
+            console.log(this.state.moreDetails)
+            return (
+                <div>
 
                 {this.renderDetails(this.state.moreDetails)}
                 <button onClick={this.handleBack}>Go back</button>
