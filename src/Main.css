@@ -103,11 +103,47 @@ h1{
     .responsive {
          width: 100%;
          padding: 0;
+    } 
+    .responsive h2{
+      font-size: 20px;
+    }
+    .main,.right{
+      width: 100%;
     }
     
   }
   @media only screen and (max-width:500px) {
     .responsive{
+      width: 100%;
+    }
+    .responsive img{
+      width: 70%;
+    }
+    .responsive h2 {
+      font-size: 20px;
+    }
+    .responsive h4{
+      font-size: 15px;
+    }
+
+  }
+  
+  @media only screen and (max-width:800px) {
+    /* For tablets: */
+    .menu{
+      width: 60%;
+    }
+    .main {
+      width: 80%;
+      padding: 0;
+    }
+    .right {
+      width: 100%;
+    }
+  }
+  @media only screen and (max-width:500px) {
+    /* For mobile phones: */
+    .menu, .main, .right {
       width: 100%;
     }
   }

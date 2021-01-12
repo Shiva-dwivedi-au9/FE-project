@@ -5,13 +5,13 @@ import '../Main.css'
 const ImgUrl = "https://image.tmdb.org/t/p/w300"
  
 
-export default function MovieDisplay(props) {
+export default function TVDisplay(props) {
 
-    const renderMovies = ({display}) => {
+    const renderTVshows = ({display}) => {
         if(display) {
                 return display.results.map((item) => {
                     const  viewMore = (e) =>{
-                        sessionStorage.setItem("id",item.id)
+                        sessionStorage.setItem("tvid",item.id)
                         window.location.reload()
                     }
                   return(
@@ -33,7 +33,7 @@ export default function MovieDisplay(props) {
                             />
                                 <h4>Vote Count : {item.vote_count}</h4>
                                 <h4>Release Date : {item.release_date}{item.first_air_date}</h4>
-                                <button onClick={viewMore} value={item.id}><Link to={`/details/${item.id}`}>View</Link></button>
+                                <button onClick={viewMore} value={item.id}><Link to={`/info/${item.id}`}>View</Link></button>
                             </p>
 
                         </div>                
@@ -51,7 +51,7 @@ export default function MovieDisplay(props) {
     return (
         <div >
             <div   style={{display:"flex",flexWrap:"wrap"}}>
-                   {renderMovies(props)}
+                   {renderTVshows(props)}
             </div>
         </div>
     )

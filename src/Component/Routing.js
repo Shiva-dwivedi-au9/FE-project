@@ -6,6 +6,7 @@ import Contact from './Contact'
 import Home from '../Main'
 import Trending from './Trending'
 import MovieDetails from './MovieDetails'
+import SeriesDetails from './tvdetails'
 
 export default function Routing() {
     return (
@@ -15,6 +16,7 @@ export default function Routing() {
 
                     <Route exact path="/" component={Home} />
                     <Route path="/contact" component={Contact} />
+                    <Route path="/info/:tvid" component={SeriesDetails} />
                     <Route path="/trending" component={Trending} />
                     <Route path="/details/:id" component={MovieDetails} />
 

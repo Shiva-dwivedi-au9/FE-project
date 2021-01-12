@@ -1,20 +1,15 @@
+
 import React, { Component } from 'react'
-import Search from  './Search'
-import './Main.css'
-import TopRated from './Component/TopRated'
-import Popular from './Component/Popular'
-import NowPlaying from './Component/NowPlaying'
-import Upcoming from './Component/Upcoming'
-import Latest from './Component/Latest'
+import TVsearch from  './TVsearch'
+import '../Main.css'
 import {Link} from 'react-router-dom'
 import {Spring} from 'react-spring/renderprops'
 import {Transition} from 'react-spring/renderprops'
-import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
-import 'react-tabs/style/react-tabs.css';
 
 
-const GenreUrl = "https://api.themoviedb.org/3/genre/movie/list?api_key=76a3351cce68be3d7eaa350f43ad5644&language=en-US"
-const GenreDetailUrl = "https://api.themoviedb.org/3/discover/movie?api_key=76a3351cce68be3d7eaa350f43ad5644&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_genres="
+const GenreURL = "https://api.themoviedb.org/3/genre/tv/list?api_key=76a3351cce68be3d7eaa350f43ad5644&language=en-US"
+const GenreDetailUrl = "https://api.themoviedb.org/3/discover/tv?api_key=76a3351cce68be3d7eaa350f43ad5644&language=en-US&sort_by=popularity.desc&page=1&timezone=America%2FNew_York&with_genres="
+const url2 = "&include_null_first_air_dates=false"
 const ImgUrl = "https://image.tmdb.org/t/p/w300"
 
 
@@ -32,7 +27,7 @@ export default class App extends Component {
       return data.results.map((item) => {
         console.log("see",data.results)
         const  viewMore = (e) =>{
-          sessionStorage.setItem("id",item.id)
+          sessionStorage.setItem("tvid",item.id)
       }
         return(
           <Transition
@@ -43,7 +38,7 @@ export default class App extends Component {
                 {item => props => <div style={props}>
                       < div className="responsive" style={{backgroundColor:' rgba(12, 4, 12, 0.900)',backdropFilter:'blur(5px)',margin:"10px",width:"400px",height:"600px"}} >
                               <h2 style={{color:"teal",textAlign:"center"}} key={item.id}>||| {item.original_name}{item.title} |||</h2>
-                             <Link onClick={viewMore} to={`/details/${item.id}`}><img style={{margin:"30px",padding:"20px"}} src={`${ImgUrl}/${item.poster_path}`}></img></Link> 
+                             <Link onClick={viewMore} to={`/info/${item.id}`}><img style={{margin:"30px",padding:"20px"}} src={`${ImgUrl}/${item.poster_path}`}></img></Link> 
                         </ div></div>}
           </Transition>
          
@@ -56,10 +51,10 @@ export default class App extends Component {
       
       return data.genres.map((item) =>{
        this. handleGenre=(e) => {
-          sessionStorage.setItem("genreid",item.id)
-          const _id = sessionStorage.getItem("genreid")
+          sessionStorage.setItem("TVgenreid",item.id)
+          const _id = sessionStorage.getItem("TVgenreid")
         
-          const  FinalURL = GenreDetailUrl  + _id
+          const  FinalURL = GenreDetailUrl  + _id + url2
           
           fetch(FinalURL)
           .then((res)=>res.json())
@@ -82,19 +77,8 @@ export default class App extends Component {
     return (
       
       <div className="main-container">
-       <Tabs>
-          <TabList>
-                <Tab style={{fontSize:"20px",fontWeight:"bold"}}>All Movies</Tab>
-                <Tab style={{fontSize:"20px",fontWeight:"bold"}}>Now Playing Movies</Tab>
-                <Tab style={{fontSize:"20px",fontWeight:"bold"}}>Upcoming Movies</Tab>
-                <Tab style={{fontSize:"20px",fontWeight:"bold"}}>Latest Movies</Tab>
-                <Tab style={{fontSize:"20px",fontWeight:"bold"}}>Popular Movies</Tab>
-                <Tab style={{fontSize:"20px",fontWeight:"bold"}}>Top Rated Movies</Tab>                
-          </TabList>
-
-          <TabPanel>
                
-                  <Search />
+                <TVsearch />
                   <Spring
                   
                   from = { {opacity: 0}}
@@ -119,29 +103,11 @@ export default class App extends Component {
                       {this.renderMovies(this.state.genreDetail)}
                   </div>
          
-          </TabPanel>
-          <TabPanel>
-                <NowPlaying />
-          </TabPanel>
-          <TabPanel>
-                <Upcoming />
-          </TabPanel>
-          <TabPanel>
-                <Latest />
-          </TabPanel>
-          <TabPanel>
-                <Popular />
-          </TabPanel>
-          <TabPanel>
-                <TopRated />
-          </TabPanel>
-  </Tabs>
-         
       </div>
     )
   }
   componentDidMount(){
-    fetch(GenreUrl,{method:'GET'})
+    fetch(GenreURL,{method:'GET'})
     .then((res) => res.json())
     .then((data) => {
         this.setState({genre:data})
