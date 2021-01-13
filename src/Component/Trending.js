@@ -18,14 +18,18 @@ export default class Trending extends Component {
 
       renderTrending=(data) => {
         if(data){
+          
           return data.results.map((item) => {
+            
             const  viewMore = (e) =>{
               sessionStorage.setItem("id",item.id)  
+              sessionStorage.setItem("tvid",item.id)
             }
             return(
               < div className="responsive" style={{backgroundColor:' rgba(12, 4, 12, 0.900)',backdropFilter:'blur(5px)',margin:"10px",width:"400px",height:"100%"}} >
                  <h2 style={{color:"teal",textAlign:"center"}} key={item.id}>||| {item.original_name}{item.title} |||</h2>
-                <Link onClick={viewMore} to={`/details/${item.id}`}><img style={{margin:"30px",padding:"20px"}} src={`${ImgUrl}/${item.poster_path}`}></img></Link> 
+                 { item.media_type == "movie" &&  <Link onClick={viewMore} to={`/details/${item.id}`}><img style={{margin:"30px",padding:"20px"}} src={`${ImgUrl}/${item.poster_path}`}></img></Link> }
+                  {  item.media_type == "tv" &&  <Link onClick={viewMore} to={`/info/${item.id}`}><img style={{margin:"30px",padding:"20px"}} src={`${ImgUrl}/${item.poster_path}`}></img></Link>}
                 <div style={{margin:"55px"}}>
                     <h4><span style={{color:"teal",fontSize:"20px"}}>Popularity : </span>  {item.popularity}</h4> 
                     <h4><span style={{color:"teal",fontSize:"20px"}}>Release Date : </span> {item.release_date} {item.first_air_date}</h4>
@@ -58,6 +62,7 @@ export default class Trending extends Component {
     render() {
         return (
             <div className="trending">
+                   
                     <h2 style={{textAlign:"center",color:"white" , backgroundColor: "rgba(12, 4, 12, 0.900)",backdropFilter:'blur(5px)'}}>Trending today</h2>
                      <div  style={{display:"flex",flexWrap:"wrap",justifyContent:"center",alignItems:"center"}}>
                     {this.renderTrending(this.state.trending)}

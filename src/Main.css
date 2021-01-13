@@ -12,7 +12,9 @@ body{
     right: 0;
     /* opacity: 0.93; */
 }
-
+div{
+  position: relative;
+}
 .main-container{
     height: 100%;
     content: "";

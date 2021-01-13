@@ -39,9 +39,9 @@ export default class Tv extends Component {
            <div  style={{display:"flex",backgroundColor:' rgba(12, 4, 12, 0.700)',backdropFilter:'blur(5px)'}}>
           <img className="main" onClick={this.openModal} style={{float:"left",width:"30%" ,margin:"30px",cursor:"pointer"}} src={`${ImgUrl}/${moreDetails.poster_path}`} alt="pic not available"></img>
                
-               <div className="right" style={{display:"block",marginTop:"150px",width:"60%"}}>
+               <div className="right" style={{display:"block",marginTop:"90px",width:"60%"}}>
                      <h2 style={{color:"turquoise",fontSize:"30px"}}>{moreDetails.tagline}</h2>
-                     <h1>{moreDetails.original_title}{moreDetails.name}</h1>
+                     <h1>{moreDetails.title}{moreDetails.name}</h1>
                      <h2 style={{color:"teal",fontWeight:"bold"}}><span style={{color:"silver"}}>Runtime : </span>{moreDetails.runtime} mins</h2>
                      <StarRatings
                              rating={moreDetails.vote_average}

@@ -5,7 +5,7 @@ import {Spring} from 'react-spring/renderprops'
 const TVUrl = "https://api.themoviedb.org/3/search/tv?api_key=76a3351cce68be3d7eaa350f43ad5644&language=en-US&page=1&query="
 const url2 = "&include_adult=false"
 
-const DefaultUrl = "https://api.themoviedb.org/3/search/search/tv?api_key=76a3351cce68be3d7eaa350f43ad5644&language=en-US&page=1&query=_&include_adult=false"
+const DefaultUrl = "https://api.themoviedb.org/3/search/tv?api_key=76a3351cce68be3d7eaa350f43ad5644&language=en-US&page=1&query=_&include_adult=false"
 let url
 export default class Search extends Component {
 
