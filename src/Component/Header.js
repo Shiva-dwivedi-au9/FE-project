@@ -14,10 +14,13 @@ export default function Header() {
         {props =>  (
             <div style={props}>
 
-                <header style={{display:"flex",backgroundColor:' rgba(12, 4, 12, 0.719)',backdropFilter:'blur(5px)',color:'white',width:"100%",height:"90px"}}>
+                <header style={{backgroundColor:' rgba(12, 4, 12, 0.719)',backdropFilter:'blur(5px)',color:'white',width:"100%"}}>
+                    <div style={{display:"flex"}}>
                         <Link to="/"> <h2 style={{marginLeft:"30px"}}>Daily Movie Mania</h2> </Link>   
                         <Link to="/movies" style={{marginLeft:"30px",marginTop:"10px"}}> <h4 >Movies</h4> </Link> 
                         <Link to="/series"  style={{marginLeft:"30px",marginTop:"10px"}}> <h4 >Series</h4> </Link>   
+                    </div>
+                        
                 </header>
                 <SearchHeader />
             </div>

@@ -15,30 +15,33 @@ export default function MovieDisplay(props) {
                         window.location.reload()
                     }
                   return(
-                    < div style={{background:"burlywood",margin:"20px",width:"100%",backgroundColor:' rgba(12, 4, 12, 0.719)',backdropFilter:'blur(5px)'}} >
-                        <h2 style={{marginLeft:"30px",color:"teal",fontSize:"40px"}}>{item.title} {item.original_name}</h2>   
-                        <div style={{display:"flex"}}>
-                            <img style={{margin:"30px"}} src={`${ImgUrl}/${item.poster_path}`} alt="pic not available"></img>
-                            <p style={{marginTop:"50px",fontSize:"20px",fontWeight:'bold'}}>
-                                <p style={{color:"silver"}}>{item.overview}</p>
-                                <h4>Popularity : {item.popularity}</h4>
-                                <h4><span style={{color:"teal",fontSize:"20px"}}>Vote Average: </span> </h4> 
-                                <StarRatings
-                                    rating={item.vote_average}
-                                    starRatedColor="blue"
-                                    numberOfStars={10}
-                                    name='rating'
-                                    starDimension="40px"
-                                    starSpacing="10px"
-                            />
-                                <h4>Vote Count : {item.vote_count}</h4>
-                                <h4>Release Date : {item.release_date}{item.first_air_date}</h4>
-                                <button onClick={viewMore} value={item.id}><Link to={`/details/${item.id}`}>View</Link></button>
-                            </p>
+                    <div className="container" style={{margin:"10px",width:"100%"}} >
 
-                        </div>                
-                        
-                    </ div>
+                            <div className="sub" style={{overflow:"auto"}}>
+                            
+                            <div className="main">
+                            <img style={{width:"100%",height:"600px"}} src={`${ImgUrl}/${item.poster_path}`} alt="pic not available"></img>
+                            </div>
+                            
+                            <div className="right">
+                            
+                                        <h2 style={{color:"teal",fontSize:"40px"}}>{item.title} {item.original_name}</h2>   
+                                        <p style={{color:"#DCDCDC",fontSize:"20px"}}>{item.overview}</p>
+                                        <StarRatings
+                                                                rating={item.vote_average}
+                                                                starRatedColor="blue"
+                                                                numberOfStars={10}
+                                                                name='rating'
+                                                                starDimension="40px"
+                                                                starSpacing="10px"
+                                                        />
+                                                            
+                                                            <h2 style={{color:"teal",fontWeight:"bold"}}><span style={{color:"silver"}}>Vote Count : </span>{item.vote_count}</h2>
+                                                            <h2 style={{color:"teal",fontWeight:"bold"}}><span style={{color:"silver"}}>Release Date :  </span>{item.release_date}{item.first_air_date}</h2>
+                                                            <button onClick={viewMore} value={item.id}><Link to={`/details/${item.id}`}>View</Link></button>
+                            </div>
+                            </div>
+                    </div>
                    
                   )
                  

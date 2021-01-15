@@ -17,30 +17,30 @@ export default function TVDisplay(props) {
                   return(
                     <div className="container" style={{margin:"10px",width:"100%"}} >
 
-                    <div className="sub" style={{overflow:"auto"}}>
-                    
-                    <div className="main">
-                    <img style={{width:"100%",height:"600px"}} src={`${ImgUrl}/${item.poster_path}`} alt="pic not available"></img>
-                    </div>
-                    
-                    <div className="right">
-                    
-                                <h2 style={{color:"teal",fontSize:"40px"}}>{item.title} {item.original_name}</h2>   
-                                <p style={{color:"#DCDCDC",fontSize:"20px"}}>{item.overview}</p>
-                                <StarRatings
-                                                        rating={item.vote_average}
-                                                        starRatedColor="blue"
-                                                        numberOfStars={10}
-                                                        name='rating'
-                                                        starDimension="40px"
-                                                        starSpacing="10px"
-                                                />
-                                                    
-                                                    <h2 style={{color:"teal",fontWeight:"bold"}}><span style={{color:"silver"}}>Vote Count : </span>{item.vote_count}</h2>
-                                                    <h2 style={{color:"teal",fontWeight:"bold"}}><span style={{color:"silver"}}>Release Date :  </span>{item.release_date}{item.first_air_date}</h2>
-                                                    <button onClick={viewMore} value={item.id}><Link to={`/info/${item.id}`}>View</Link></button>
-                    </div>
-                    </div>
+                            <div className="sub" style={{overflow:"auto"}}>
+                            
+                            <div className="main">
+                            <img style={{width:"100%",height:"600px"}} src={`${ImgUrl}/${item.poster_path}`} alt="pic not available"></img>
+                            </div>
+                            
+                            <div className="right">
+                            
+                                        <h2 style={{color:"teal",fontSize:"40px"}}>{item.title} {item.original_name}</h2>   
+                                        <p style={{color:"#DCDCDC",fontSize:"20px"}}>{item.overview}</p>
+                                        <StarRatings
+                                                                rating={item.vote_average}
+                                                                starRatedColor="blue"
+                                                                numberOfStars={10}
+                                                                name='rating'
+                                                                starDimension="40px"
+                                                                starSpacing="10px"
+                                                        />
+                                                            
+                                                            <h2 style={{color:"teal",fontWeight:"bold"}}><span style={{color:"silver"}}>Vote Count : </span>{item.vote_count}</h2>
+                                                            <h2 style={{color:"teal",fontWeight:"bold"}}><span style={{color:"silver"}}>Release Date :  </span>{item.release_date}{item.first_air_date}</h2>
+                                                            <button onClick={viewMore} value={item.id}><Link to={`/info/${item.id}`}>View</Link></button>
+                            </div>
+                            </div>
                     </div>
                   )
                  
