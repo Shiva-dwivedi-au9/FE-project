@@ -31,7 +31,6 @@ export default class SimilarMovies extends Component {
    
         return (
             <div>
-                <h1>Similar Movies</h1>
                 <div style={{display:"flex",flexWrap:"wrap",backgroundColor:' rgba(12, 4, 12, 0.719)',backdropFilter:'blur(5px)',justifyContent:"center",alignItems:"center"}} >
                 {this.renderSimilar(this.state.similar)}
                 </div>

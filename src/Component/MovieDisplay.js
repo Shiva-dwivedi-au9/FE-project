@@ -20,7 +20,7 @@ export default function MovieDisplay(props) {
                         <div style={{display:"flex"}}>
                             <img style={{margin:"30px"}} src={`${ImgUrl}/${item.poster_path}`} alt="pic not available"></img>
                             <p style={{marginTop:"50px",fontSize:"20px",fontWeight:'bold'}}>
-                                <p style={{color:"green"}}>{item.overview}</p>
+                                <p style={{color:"silver"}}>{item.overview}</p>
                                 <h4>Popularity : {item.popularity}</h4>
                                 <h4><span style={{color:"teal",fontSize:"20px"}}>Vote Average: </span> </h4> 
                                 <StarRatings

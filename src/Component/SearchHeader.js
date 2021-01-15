@@ -9,13 +9,15 @@ export class SearchHeader extends Component {
     constructor(props){
         super(props)
         this.state = {
-            suggestions : ""
+            suggestions : "",
+            val:""
         }
     }
     handleChange=(e) => {
-        const val = e.target.value
-        if(val){
-            url = `${MultiSearch}${val}`
+        const search = e.target.value
+        this.setState({val:search})
+        if(search){
+            url = `${MultiSearch}${search}`
        }
        else{
             url = DefaultSearch
@@ -34,20 +36,19 @@ export class SearchHeader extends Component {
                 const viewMore = (e) => {
                     sessionStorage.setItem("id",item.id)
                     sessionStorage.setItem("tvid",item.id)
+                    // if(window.location.pathname.split("/")[1] == "details" || window.location.pathname.split("/")[1] == "info"){
+                        // window.location.reload()
+                    // }
+                    console.log("media_type",item.media_type)
+                    this.setState({val:""})
                     this.setState({suggestions:""})
-                    if(window.location.pathname.split("/")[1] == "details" || window.location.pathname.split("/")[1] == "info"){
-                        window.location.reload()
-                    }
-                    
                 }
                 return(
                     <div style={{width:"500px"}}>
-                     { item.media_type == "movie" &&  <Link onClick={viewMore} to={`/details/${item.id}`}><h4>{item.name} {item.title}</h4></Link> }
-                    {  item.media_type == "tv" &&  <Link onClick={viewMore} to={`/info/${item.id}`}><h4>{item.name}{item.title}</h4></Link>}
-                    
+                     { item.media_type == "movie" &&  <Link onClick={viewMore} to={`/details/${item.id}`} target="_blank"><h4>{item.name} {item.title}</h4></Link> }
+                    {  item.media_type == "tv" &&  <Link onClick={viewMore} to={`/info/${item.id}`} target="_blank"><h4>{item.name}{item.title}</h4></Link> }
                     </div>
-                   
-                    
+                                       
                 )
             })
         }
@@ -55,8 +56,8 @@ export class SearchHeader extends Component {
     render() {
         console.log("searchresult" , this.state.suggestions)
         return (
-            <div style={{position:"absolute",zIndex:"100",bbackgroundColor:' rgba(12, 4, 12, 0.719)',backdropFilter:'blur(5px)',top:"0",right:"0"}}>
-                <input onChange={this.handleChange.bind(this)} type="text" placeholder="Enter Keywords to search"  style={{width:"500px"}}/>
+            <div style={{position:"absolute",zIndex:"100",top:"0",right:"0",backdropFilter:'blur(5px)'}}>
+                <input onChange={this.handleChange.bind(this)} value={this.state.val} type="text" placeholder="Enter Keywords to search"  style={{width:"500px"}}/>
                 <div >
                     {this.renderSuggestions(this.state.suggestions)}
                 </div>

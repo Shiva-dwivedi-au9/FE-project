@@ -5,7 +5,6 @@ import TopRated from './Component/TopRated'
 import Popular from './Component/Popular'
 import NowPlaying from './Component/NowPlaying'
 import Upcoming from './Component/Upcoming'
-import Latest from './Component/Latest'
 import {Link} from 'react-router-dom'
 import {Spring} from 'react-spring/renderprops'
 import {Transition} from 'react-spring/renderprops'
@@ -87,7 +86,6 @@ export default class App extends Component {
                 <Tab style={{fontSize:"20px",fontWeight:"bold"}}>All Movies</Tab>
                 <Tab style={{fontSize:"20px",fontWeight:"bold"}}>Now Playing Movies</Tab>
                 <Tab style={{fontSize:"20px",fontWeight:"bold"}}>Upcoming Movies</Tab>
-                <Tab style={{fontSize:"20px",fontWeight:"bold"}}>Latest Movies</Tab>
                 <Tab style={{fontSize:"20px",fontWeight:"bold"}}>Popular Movies</Tab>
                 <Tab style={{fontSize:"20px",fontWeight:"bold"}}>Top Rated Movies</Tab>                
           </TabList>
@@ -125,9 +123,6 @@ export default class App extends Component {
           </TabPanel>
           <TabPanel>
                 <Upcoming />
-          </TabPanel>
-          <TabPanel>
-                <Latest />
           </TabPanel>
           <TabPanel>
                 <Popular />

@@ -34,7 +34,6 @@ export default class recommendedMovies extends Component {
 
         return (
             <div>
-                <h1>recommended Movies</h1>
                 <div style={{display:"flex",flexWrap:"wrap",backgroundColor:' rgba(12, 4, 12, 0.719)',backdropFilter:'blur(5px)',justifyContent:"center",alignItems:"center"}} >
                 {this.renderrecommended(this.state.recommended)}
                 </div>
