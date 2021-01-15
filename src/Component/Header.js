@@ -13,7 +13,7 @@ export default function Header() {
         >
         {props =>  (
             <div style={props}>
-
+                <div className="header">
                 <header style={{backgroundColor:' rgba(12, 4, 12, 0.719)',backdropFilter:'blur(5px)',color:'white',width:"100%"}}>
                     <div style={{display:"flex"}}>
                         <Link to="/"> <h2 style={{marginLeft:"30px"}}>Daily Movie Mania</h2> </Link>   
@@ -22,7 +22,9 @@ export default function Header() {
                     </div>
                         
                 </header>
-                <SearchHeader />
+                {/* <SearchHeader /> */}
+                </div>
+                
             </div>
         )}
         </Spring>

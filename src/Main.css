@@ -179,12 +179,24 @@ h1{
    .right {
      width: 100%;
    }
+   .header{
+    display: block;
+  }
+  header{
+    display: block;
+  }
  }
  @media only screen and (max-width:500px) {
    /* For mobile phones: */
    .menu, .main, .right {
      width: 100%;
    }
+   .header{
+     display: block;
+   }
+   header{
+    display: block;
+  }
  }
 header{
   width: 100%;
