@@ -12,6 +12,7 @@ export default function TVDisplay(props) {
                 return display.results.map((item) => {
                     const  viewMore = (e) =>{
                         sessionStorage.setItem("tvid",item.id)
+                        sessionStorage.setItem("seriesName",item.title || item.original_name)
                         window.location.reload()
                     }
                   return(

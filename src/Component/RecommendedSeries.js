@@ -17,6 +17,7 @@ export default class recommendedMovies extends Component {
           return data.results.map((item) => {
             const  viewMore = (e) =>{
                 sessionStorage.setItem("tvid",item.id)
+                sessionStorage.setItem("seriesName",item.original_name)
                 window.location.reload()
             }
             console.log("see",data.results)

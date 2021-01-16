@@ -20,10 +20,10 @@ const Header = () => {
         </div>
         <ul className={click ? "nav-options active" : "nav-options"}>
           <li className="option" onClick={closeMobileMenu}>
-          <Link to="/movies" style={{marginTop:"100px"}}>Movies</Link> 
+          <Link to="/movies">Movies</Link> 
           </li>
           <li className="option" onClick={closeMobileMenu}>
-          <Link to="/series"style={{marginTop:"50px"}} >Series</Link>   
+          <Link to="/series" >Series</Link>   
           </li>
           <li className="option" onClick={closeMobileMenu}>
           <Link to="/series" >Favourites</Link>   

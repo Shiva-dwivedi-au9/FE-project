@@ -19,15 +19,15 @@ export class Seasondetail extends Component {
         if(seasonDetail) {
             return seasonDetail.episodes.map((item) => {
                 return(
-                    <div>
+                    <div >
                                  <h2 style={{color:"whitesmoke"}}>{item.episode_number}. {item.name}</h2>
                                 <StarRatings
                                         rating={item.vote_average}
                                         starRatedColor="blue"
                                         numberOfStars={10}
                                         name='rating'
-                                        starDimension="40px"
-                                        starSpacing="10px"
+                                        starDimension="25px"
+                                        starSpacing="5px"
                                 />
                                 <p style={{color:"#DCDCDC",fontSize:"20px",fontWeight:"bold"}}>{item.overview}</p>
                                 <div style={{display:"flex",justifyContent:"space-between",marginRight:"20px"}}>
@@ -49,7 +49,7 @@ export class Seasondetail extends Component {
                                         <img style={{width:"100%"}} src={`${ImgUrl}/${seasonDetail.poster_path}`} alt="pic not available"></img>
                                 </div>
                                 
-                                <div className="right">
+                                <div className="right" style={{overflowY:"scroll",height:"800px"}}>
 
                                     {this.renderEpisode(this.state.seasonDetail)}
                                                                     
@@ -60,8 +60,6 @@ export class Seasondetail extends Component {
         }
     }
     render() {
-        console.log("seasonDetails=====>" , this.state.seasonDetail)
-        console.log("episodeDetails=====>" , this.state.episode)
         return (
             <div>
                     {this.renderSeason(this.state.seasonDetail)}

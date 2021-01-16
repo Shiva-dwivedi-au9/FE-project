@@ -28,6 +28,7 @@ export default class App extends Component {
         console.log("see",data.results)
         const  viewMore = (e) =>{
           sessionStorage.setItem("tvid",item.id)
+          sessionStorage.setItem("seriesName",item.title || item.original_name)
       }
         return(
           <Transition

@@ -4,6 +4,7 @@ import {Link} from 'react-router-dom'
 const api_key = "api_key=76a3351cce68be3d7eaa350f43ad5644"
 const TrailerUrl = "https://api.themoviedb.org/3/tv/"
 const ImgUrl = "https://image.tmdb.org/t/p/w500"
+const seriesName = sessionStorage.getItem("seriesName")
 
 export class SeasonDisplay extends Component {
 
@@ -21,12 +22,12 @@ export class SeasonDisplay extends Component {
                     sessionStorage.setItem("seasonNo" , item.season_number)
                 }
                 return(
-                    <div className="responsive" style={{backgroundColor:' rgba(12, 4, 12, 0.900)',backdropFilter:'blur(5px)',margin:"10px",width:"400px",height:"100%"}} >
+                    <div className="responsive" style={{backgroundColor:' rgba(12, 4, 12, 0.900)',backdropFilter:'blur(5px)',margin:"10px",width:"400px",height:"700px"}} >
                      
                     <h2  style={{color:"teal",textAlign:"center"}} key={item.id}>{item.name}</h2>
                     <h3 style={{color:"silver",textAlign:"center"}}>Episodes : {item.episode_count}</h3>
                     <h3  style={{color:"teal",textAlign:"center"}}> Aired on : {item.air_date}</h3>
-                    <Link onClick={seasonNum} to={`/season/${item.season_number} `} target='_blank'><img style={{margin:"40px",padding:"20px",width:"70%"}} src={`${ImgUrl}/${item.poster_path}`} /> </Link>
+                    <Link onClick={seasonNum} to={`/season/${seriesName}/${item.season_number} `} target='_blank'><img style={{margin:"40px",padding:"20px",width:"70%"}} src={`${ImgUrl}/${item.poster_path}`} /> </Link>
                                                                                                                            
                    </div>
                 )

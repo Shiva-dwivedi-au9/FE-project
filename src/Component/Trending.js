@@ -24,6 +24,7 @@ export default class Trending extends Component {
             const  viewMore = (e) =>{
               sessionStorage.setItem("id",item.id)  
               sessionStorage.setItem("tvid",item.id)
+              sessionStorage.setItem("seriesName",item.title || item.original_name)
             }
             return(
               < div className="responsive" style={{backgroundColor:' rgba(12, 4, 12, 0.900)',backdropFilter:'blur(5px)',margin:"10px",width:"400px",height:"100%"}} >

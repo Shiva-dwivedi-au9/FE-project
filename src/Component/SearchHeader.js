@@ -36,10 +36,10 @@ export class SearchHeader extends Component {
                 const viewMore = (e) => {
                     sessionStorage.setItem("id",item.id)
                     sessionStorage.setItem("tvid",item.id)
+                    sessionStorage.setItem("seriesName",item.title || item.name)
                     // if(window.location.pathname.split("/")[1] == "details" || window.location.pathname.split("/")[1] == "info"){
                         // window.location.reload()
                     // }
-                    console.log("media_type",item.media_type)
                     this.setState({val:""})
                     this.setState({suggestions:""})
                 }
@@ -55,9 +55,9 @@ export class SearchHeader extends Component {
     }
     render() {
         return (
-            <div style={{position:"absolute",zIndex:"1",top:"0",right:"0",backdropFilter:'blur(5px)'}}>
-                <input onChange={this.handleChange.bind(this)} value={this.state.val} type="text" placeholder="Enter Keywords to search"  style={{width:"90%"}}/>
-                <div >
+            <div className="scroll" style={{position:"absolute",zIndex:"1",top:"0",right:"0"}}>
+                <input onChange={this.handleChange.bind(this)} value={this.state.val} type="text" placeholder="Enter Keywords to search"  style={{width:"90%",marginLeft:"30px"}}/>
+                <div style={{overflowY:"scroll",minWidth:"400px",height:"400px"}}>
                     {this.renderSuggestions(this.state.suggestions)}
                 </div>
             </div>
