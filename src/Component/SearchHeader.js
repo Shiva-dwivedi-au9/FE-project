@@ -44,7 +44,7 @@ export class SearchHeader extends Component {
                     this.setState({suggestions:""})
                 }
                 return(
-                    <div style={{width:"500px"}}>
+                    <div style={{width:"400px",textAlign:"center"}}>
                      { item.media_type == "movie" &&  <Link onClick={viewMore} to={`/details/${item.id}`} target="_blank"><h4>{item.name} {item.title}</h4></Link> }
                     {  item.media_type == "tv" &&  <Link onClick={viewMore} to={`/info/${item.id}`} target="_blank"><h4>{item.name}{item.title}</h4></Link> }
                     </div>
@@ -54,10 +54,9 @@ export class SearchHeader extends Component {
         }
     }
     render() {
-        console.log("searchresult" , this.state.suggestions)
         return (
-            <div style={{position:"absolute",zIndex:"100",top:"0",right:"0",backdropFilter:'blur(5px)'}}>
-                <input onChange={this.handleChange.bind(this)} value={this.state.val} type="text" placeholder="Enter Keywords to search"  style={{width:"500px"}}/>
+            <div style={{position:"absolute",zIndex:"1",top:"0",right:"0",backdropFilter:'blur(5px)'}}>
+                <input onChange={this.handleChange.bind(this)} value={this.state.val} type="text" placeholder="Enter Keywords to search"  style={{width:"90%"}}/>
                 <div >
                     {this.renderSuggestions(this.state.suggestions)}
                 </div>
