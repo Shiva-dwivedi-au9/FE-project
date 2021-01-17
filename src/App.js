@@ -1,9 +1,15 @@
 import React, { Component } from 'react'
 import Search from  './Search'
 import './Main.css'
+import TopRated from './Component/TopRated'
+import Popular from './Component/Popular'
+import NowPlaying from './Component/NowPlaying'
+import Upcoming from './Component/Upcoming'
 import {Link} from 'react-router-dom'
 import {Spring} from 'react-spring/renderprops'
 import {Transition} from 'react-spring/renderprops'
+import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+import 'react-tabs/style/react-tabs.css';
 
 
 const GenreUrl = "https://api.themoviedb.org/3/genre/movie/list?api_key=76a3351cce68be3d7eaa350f43ad5644&language=en-US"
@@ -35,7 +41,7 @@ export default class App extends Component {
                 leave={{ transform: 'translate3d(0,-80px,0)' }}>
                 {item => props => <div style={props}>
                       < div className="responsive" style={{backgroundColor:' rgba(12, 4, 12, 0.900)',backdropFilter:'blur(5px)',margin:"10px",width:"400px",height:"600px"}} >
-                              <h2 style={{color:"green",textAlign:"center"}} key={item.id}>||| {item.original_name}{item.title} |||</h2>
+                              <h2 style={{color:"teal",textAlign:"center"}} key={item.id}>||| {item.original_name}{item.title} |||</h2>
                              <Link onClick={viewMore} to={`/details/${item.id}`}><img style={{margin:"30px",padding:"20px"}} src={`${ImgUrl}/${item.poster_path}`}></img></Link> 
                         </ div></div>}
           </Transition>
@@ -75,29 +81,56 @@ export default class App extends Component {
     return (
       
       <div className="main-container">
-          <Search />
-          <Spring
-          
-          from = { {opacity: 0}}
-          to = {{opacity: 1}}
-          config = {{ delay: 1100 ,  duration : 1000}}
-         >
-         {props =>  (
-             <div style={props}>
-             <h1 style={{textAlign:"center"}}>GENRE</h1>
-              <div style={{display:"flex",flexWrap:"wrap",backgroundColor:' rgba(12, 4, 12, 0.719)',backdropFilter:'blur(5px)',justifyContent:"center",alignItems:"center"}}>
-                  {this.renderGenre(this.state.genre)}
-              </div>
-              </div>
-            )}
-            </Spring>
-         
-           
+       <Tabs>
+          <TabList>
+                <Tab style={{fontSize:"20px",fontWeight:"bold"}}>All Movies</Tab>
+                <Tab style={{fontSize:"20px",fontWeight:"bold"}}>Now Playing Movies</Tab>
+                <Tab style={{fontSize:"20px",fontWeight:"bold"}}>Upcoming Movies</Tab>
+                <Tab style={{fontSize:"20px",fontWeight:"bold"}}>Popular Movies</Tab>
+                <Tab style={{fontSize:"20px",fontWeight:"bold"}}>Top Rated Movies</Tab>                
+          </TabList>
 
-          <h2 style={{textAlign:"center"}}>Get results by Genre here</h2>
-          <div style={{display:"flex",flexWrap:"wrap",backgroundColor:' rgba(12, 4, 12, 0.719)',backdropFilter:'blur(5px)',justifyContent:"center",alignItems:"center"}} >
-              {this.renderMovies(this.state.genreDetail)}
-          </div>
+          <TabPanel>
+               
+                  <Search />
+                  <Spring
+                  
+                  from = { {opacity: 0}}
+                  to = {{opacity: 1}}
+                  config = {{ delay: 1100 ,  duration : 1000}}
+                >
+                {props =>  (
+                    <div style={props}>
+                    <br/>
+                    <br/>
+                    <br/> 
+                    <br/>
+                    <h2 style={{textAlign:"center"}}>GENRE</h2>
+                      <div style={{display:"flex",flexWrap:"wrap",backgroundColor:' rgba(12, 4, 12, 0.719)',backdropFilter:'blur(5px)',justifyContent:"center",alignItems:"center"}}>
+                          {this.renderGenre(this.state.genre)}
+                      </div>
+                      </div>
+                    )}
+                    </Spring>
+                                  
+                  <div style={{display:"flex",flexWrap:"wrap",backgroundColor:' rgba(12, 4, 12, 0.719)',backdropFilter:'blur(5px)',justifyContent:"center",alignItems:"center"}} >
+                      {this.renderMovies(this.state.genreDetail)}
+                  </div>
+         
+          </TabPanel>
+          <TabPanel>
+                <NowPlaying />
+          </TabPanel>
+          <TabPanel>
+                <Upcoming />
+          </TabPanel>
+          <TabPanel>
+                <Popular />
+          </TabPanel>
+          <TabPanel>
+                <TopRated />
+          </TabPanel>
+  </Tabs>
          
       </div>
     )

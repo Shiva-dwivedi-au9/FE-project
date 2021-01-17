@@ -37,6 +37,10 @@ input{
     margin-top: 30px;
 }
 
+input::placeholder{
+  font-size: 25px;
+}
+
 input:focus{
     outline: none;
 }
@@ -52,17 +56,13 @@ button{
     background-color: teal;
     border-radius: 20px;
 }
+img :hover{
+  transform: scaleX(1.52);
+}
 .trending h4{
     color: white;
 }
 .trending h1{
-    text-align: center;
-    color: whitesmoke;
-}
-.tv h4{
-    color: white;
-}
-.tv h1{
     text-align: center;
     color: whitesmoke;
 }
@@ -110,11 +110,113 @@ h1{
     .responsive {
          width: 100%;
          padding: 0;
+    } 
+    .responsive h2{
+      font-size: 20px;
+    }
+    .main,.right{
+      width: 100%;
     }
     
+    input::placeholder{
+      font-size: 15px;
+    }
   }
   @media only screen and (max-width:500px) {
     .responsive{
       width: 100%;
     }
+    .responsive img{
+      width: 70%;
+    }
+    .responsive h2 {
+      font-size: 20px;
+    }
+    .responsive h4{
+      font-size: 15px;
+    }
+
   }
+  
+  @media only screen and (max-width:800px) {
+    /* For tablets: */
+    .menu{
+      width: 60%;
+    }
+    .main {
+      width: 80%;
+      padding: 0;
+    }
+    .right {
+      width: 100%;
+    }
+    .scroll{
+      margin-left: 20px;
+    }
+  }
+  @media only screen and (max-width:500px) {
+    /* For mobile phones: */
+    .menu, .main, .right {
+      width: 100%;
+    }
+    .scroll{
+      margin-top: 250px;
+    }
+    input{
+      width: 80%;
+    }
+    input::placeholder{
+      font-size: 18px;
+    }
+  }
+
+  .sub {
+   background-color:rgba(12, 4, 12, 0.700);
+   backdrop-filter:blur(5px);
+ }
+ .main {
+   float: left;
+   width: 30%;
+   margin-top: 20px;
+   padding: 0 20px;
+   overflow: hidden;
+ }
+ .right {
+   float: left;
+   width: 50%;
+   padding: 10px 15px;
+   margin-top: 7px;
+ }
+ 
+ @media only screen and (max-width:800px) {
+   /* For tablets: */
+   .main {
+     width: 100%;
+     padding: 0;
+     
+   }
+   .right {
+     width: 100%;
+   }
+   .header{
+    display: block;
+  }
+  header{
+    display: block;
+  }
+ }
+ @media only screen and (max-width:500px) {
+   /* For mobile phones: */
+   .menu, .main, .right {
+     width: 100%;
+   }
+   .header{
+     display: block;
+   }
+   header{
+    display: block;
+  }
+ }
+header{
+  width: 100%;
+}

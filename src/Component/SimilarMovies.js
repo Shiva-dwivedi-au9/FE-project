@@ -19,8 +19,8 @@ export default class SimilarMovies extends Component {
                 window.location.reload()            }
         
             return(
-              < div style={{backgroundColor:' rgba(12, 4, 12, 0.700)',backdropFilter:'blur(5px)',margin:"10px",width:"400px"}} >
-                     <h2 style={{color:"green",textAlign:"center"}} key={item.id}>||| {item.original_name}{item.title} |||</h2>
+              < div style={{backgroundColor:' rgba(12, 4, 12, 0.700)',backdropFilter:'blur(5px)',margin:"10px",width:"400px",height:"700px"}} >
+                     <h2 style={{color:"silver",textAlign:"center"}} key={item.id}>||| {item.original_name}{item.title} |||</h2>
                      <Link onClick={viewMore} to={`/details/${item.id}`}><img style={{margin:"30px",padding:"20px"}} src={`${ImgUrl}/${item.poster_path}`}></img></Link> 
               </ div>
             )
@@ -31,7 +31,6 @@ export default class SimilarMovies extends Component {
    
         return (
             <div>
-                <h1>Similar Movies</h1>
                 <div style={{display:"flex",flexWrap:"wrap",backgroundColor:' rgba(12, 4, 12, 0.719)',backdropFilter:'blur(5px)',justifyContent:"center",alignItems:"center"}} >
                 {this.renderSimilar(this.state.similar)}
                 </div>

@@ -44,7 +44,7 @@ class tv extends Component {
             return(
               < div style={{backgroundColor:' rgba(12, 4, 12, 0.900)',backdropFilter:'blur(5px)',margin:"10px"}} >
                  <h2 style={{color:"green",textAlign:"center"}} key={tv.id}>||| {tv.original_name}{tv.title} |||</h2>
-                <Link onClick={det} to={`/info/${tv.id}`}><img style={{margin:"30px",padding:"20px"}} src={`${ImgUrl}/${tv.poster_path}`}></img></Link> 
+                <Link onClick={det} to={`/details/${tv.id}`}><img style={{margin:"30px",padding:"20px"}} src={`${ImgUrl}/${tv.poster_path}`}></img></Link> 
                 <div style={{margin:"55px"}}>
                     <h4><span style={{color:"teal",fontSize:"20px"}}>Popularity : </span>  {tv.popularity}</h4> 
                     <h4><span style={{color:"teal",fontSize:"20px"}}>Release Date : </span> {tv.release_date} {tv.first_air_date}</h4>
@@ -76,9 +76,8 @@ class tv extends Component {
         }
       }
       
-            
+
 }
 
 
-  
 export default tv;
