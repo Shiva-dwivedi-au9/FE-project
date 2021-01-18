@@ -21,6 +21,7 @@ export default class Tv extends Component {
         this.state = {
             videos : "",
             moreDetails:"",
+            id : sessionStorage.getItem("tvid") ,
             isOpen: false
         }
         this.openModal = this.openModal.bind(this)
@@ -80,9 +81,9 @@ export default class Tv extends Component {
                     sessionStorage.setItem("tvkey",item.key)
                     return(
                         <div style={{textAlign:'center'}}>
-                            <h1>Name : {item.name}</h1>
+                            <h3>Name : {item.name}</h3>
                             <h2 style={{color:"white"}}>Source : {item.site}</h2>
-                            <h3 style={{textAlign:"center"}}><iframe width="800" height="500" src={`${YoutubeUrl}/${item.key}`} frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></h3>
+                           <div className="iframe"> <h3 style={{textAlign:"center"}}><iframe className="responsive-iframe" width="800" height="500" src={`${YoutubeUrl}/${item.key}`} frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></h3></div>
                         </div>
                     )
                 })
@@ -137,10 +138,10 @@ export default class Tv extends Component {
     }
 
     componentDidMount(){
-        const id = sessionStorage.getItem("tvid")
-        URL = TrailerUrl + id +  "/videos?"+ api_key + "&language=en-US"
+        
+        URL = TrailerUrl + this.state.id +  "/videos?"+ api_key + "&language=en-US"
 
-       const  detailUrl = TrailerUrl  + id + "?" + api_key + "&language=en-US"
+       const  detailUrl = TrailerUrl  + this.state.id + "?" + api_key + "&language=en-US"
        
         fetch(URL)
         .then((res) => res.json())

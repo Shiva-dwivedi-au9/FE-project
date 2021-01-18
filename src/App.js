@@ -23,7 +23,8 @@ export default class App extends Component {
     super()
     this.state = {
         genre:"",
-        genreDetail:""
+        genreDetail:"",
+        movies : []
     }
   }
   renderMovies = (data) => {
@@ -31,12 +32,23 @@ export default class App extends Component {
       return data.results.map((item) => {
         console.log("see",data.results)
         const  viewMore = (e) =>{
+          
+          const New_val  ={ 'id' : item.id , 'img' : item.poster_path , 'name' :  item.original_name || item.title}
+
+          if (localStorage.getItem("movieList") == null) {
+              localStorage.setItem("movieList" , '[]')
+          }
+
+          var Old_val = JSON.parse(localStorage.getItem("movieList"))
+          Old_val.push(New_val)
+
+          localStorage.setItem("movieList" , JSON.stringify(Old_val))
           sessionStorage.setItem("id",item.id)
       }
         return(
           <Transition
                 items={item} keys={item => item.key}
-                from={{ transform: 'translate3d(0,-80px,0)' }}
+                from={{ transform: 'translate3d(0,-800px,0)' }}
                 enter={{ transform: 'translate3d(0,0px,0)' }}
                 leave={{ transform: 'translate3d(0,-80px,0)' }}>
                 {item => props => <div style={props}>
@@ -77,7 +89,7 @@ export default class App extends Component {
   
 
   render() {
-  console.log("genredata" , this.state.genreDetail)
+  console.log("local" , this.state.movies)
     return (
       
       <div className="main-container">

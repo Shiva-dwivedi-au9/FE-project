@@ -8,13 +8,26 @@ export default class Similarseries extends Component {
 constructor(){
         super()
         this.state = {
-            similar : ""
+            similar : "",
+            similar_id : sessionStorage.getItem("tvid")
         }
     }
     renderSimilar = (data) => {
         if(data){
           return data.results.map((item) => {
             const  viewMore = (e) =>{
+
+              const New_val  ={ 'tvid' : item.id , 'img' : item.poster_path , 'name' :  item.original_name || item.title}
+
+              if (localStorage.getItem("TVList") == null) {
+                  localStorage.setItem("TVList" , '[]')
+              }
+
+              var Old_val = JSON.parse(localStorage.getItem("TVList"))
+              Old_val.push(New_val)
+
+              localStorage.setItem("TVList" , JSON.stringify(Old_val))
+              
                 sessionStorage.setItem("tvid",item.id)
                 sessionStorage.setItem("seriesName",item.title || item.original_name)
                 window.location.reload()            }
@@ -40,8 +53,8 @@ constructor(){
     }
     
     componentDidMount(){
-        const similar_id = sessionStorage.getItem("tvid")
-        const similarURL = SimilarMoviesURL  + similar_id + url2
+        
+        const similarURL = SimilarMoviesURL  +this.state.similar_id + url2
 
         fetch(similarURL)
         .then((res) => res.json())

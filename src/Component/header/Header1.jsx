@@ -26,10 +26,10 @@ const Header = () => {
           <Link to="/series" >Series</Link>   
           </li>
           <li className="option" onClick={closeMobileMenu}>
-          <Link to="/series" >Favourites</Link>   
+          <Link to="/favourite" >Favourites</Link>   
           </li>
           <li className="option" onClick={closeMobileMenu}>
-          <Link to="/series" >Visited</Link>   
+          <Link to="/visited" >Visited</Link>   
           </li>
           <SearchHeader />
         </ul>

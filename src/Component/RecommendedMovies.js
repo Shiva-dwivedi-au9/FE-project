@@ -15,6 +15,20 @@ export default class recommendedMovies extends Component {
         if(data){
           return data.results.map((item) => {
             const  viewMore = (e) =>{
+
+                const New_val  ={ 'id' : item.id , 'img' : item.poster_path , 'name' :  item.original_name || item.title}
+
+                if (localStorage.getItem("movieList") == null) {
+                    localStorage.setItem("movieList" , '[]')
+                }
+      
+                var Old_val = JSON.parse(localStorage.getItem("movieList"))
+                Old_val.push(New_val)
+      
+                localStorage.setItem("movieList" , JSON.stringify(Old_val))
+
+                sessionStorage.setItem("id",item.id)
+
                 sessionStorage.setItem("id",item.id)
                 window.location.reload()
             }

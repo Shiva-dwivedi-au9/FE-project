@@ -49,7 +49,7 @@ export class Seasondetail extends Component {
                                         <img style={{width:"100%"}} src={`${ImgUrl}/${seasonDetail.poster_path}`} alt="pic not available"></img>
                                 </div>
                                 
-                                <div className="right" style={{overflowY:"scroll",height:"800px"}}>
+                                <div className="right" style={{overflowY:"scroll",scrollbarColor:"transparent",height:"800px",width:"65%"}}>
 
                                     {this.renderEpisode(this.state.seasonDetail)}
                                                                     

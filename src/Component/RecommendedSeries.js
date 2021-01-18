@@ -9,13 +9,25 @@ export default class recommendedMovies extends Component {
     constructor(){
         super()
         this.state = {
-            recommended : ""
+            recommended : "",
+            recommended_id : sessionStorage.getItem("tvid")
         }
     }
     renderrecommended = (data) => {
         if(data){
           return data.results.map((item) => {
             const  viewMore = (e) =>{
+                const New_val  ={ 'tvid' : item.id , 'img' : item.poster_path , 'name' :  item.original_name || item.title}
+
+                if (localStorage.getItem("TVList") == null) {
+                    localStorage.setItem("TVList" , '[]')
+                }
+
+                var Old_val = JSON.parse(localStorage.getItem("TVList"))
+                Old_val.push(New_val)
+
+                localStorage.setItem("TVList" , JSON.stringify(Old_val))
+
                 sessionStorage.setItem("tvid",item.id)
                 sessionStorage.setItem("seriesName",item.original_name)
                 window.location.reload()
@@ -43,8 +55,8 @@ export default class recommendedMovies extends Component {
     }
     
     componentDidMount(){
-        const recommended_id = sessionStorage.getItem("tvid")
-        const recommendedURL = recommendedMoviesURL  + recommended_id + url2
+
+        const recommendedURL = recommendedMoviesURL  + this.state.recommended_id + url2
 
         fetch(recommendedURL)
         .then((res) => res.json())

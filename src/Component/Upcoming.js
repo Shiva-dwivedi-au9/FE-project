@@ -20,8 +20,21 @@ export default class Upcoming extends Component {
         if(data){
           return data.results.map((item) => {
             const  viewMore = (e) =>{
+
+              const New_val  ={ 'id' : item.id , 'img' : item.poster_path , 'name' :  item.original_name || item.title}
+
+              if (localStorage.getItem("movieList") == null) {
+                  localStorage.setItem("movieList" , '[]')
+              }
+    
+              var Old_val = JSON.parse(localStorage.getItem("movieList"))
+              Old_val.push(New_val)
+    
+              localStorage.setItem("movieList" , JSON.stringify(Old_val))
+              
               sessionStorage.setItem("id",item.id)  
             }
+
             return(
               < div className="responsive" style={{backgroundColor:' rgba(12, 4, 12, 0.900)',backdropFilter:'blur(5px)',margin:"10px",width:"400px",height:"100%"}} >
                  <h2 style={{color:"teal",textAlign:"center"}} key={item.id}>||| {item.original_name}{item.title} |||</h2>

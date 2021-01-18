@@ -10,6 +10,8 @@ import SeriesDetails from './tvdetails'
 import App from '../App'
 import TVapp from './TVapp'
 import Seasondetail from './Seasondetail'
+import Visited from './Visited'
+import Favourite from './Favourite'
 
 export default function Routing() {
     return (
@@ -25,6 +27,9 @@ export default function Routing() {
                     <Route path="/season/:id" component={Seasondetail} />
                     <Route exact path = "/movies" component ={App} />
                     <Route exact path = "/series" component = {TVapp} />
+                    <Route exact path = "/visited" component = {Visited} />
+                    <Route  exact path = "/favourite" component = { Favourite} />
+
  
                 <Footer year="2021" month="JAN"  />
             </BrowserRouter>

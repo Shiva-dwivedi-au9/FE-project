@@ -11,6 +11,20 @@ export default function MovieDisplay(props) {
         if(display) {
                 return display.results.map((item) => {
                     const  viewMore = (e) =>{
+
+                        const New_val  ={ 'id' : item.id , 'img' : item.poster_path , 'name' : item.title || item.original_name}
+
+                        if (localStorage.getItem("movieList") == null) {
+                            localStorage.setItem("movieList" , '[]')
+                        }
+              
+                        var Old_val = JSON.parse(localStorage.getItem("movieList"))
+                        Old_val.push(New_val)
+              
+                        localStorage.setItem("movieList" , JSON.stringify(Old_val))
+    
+                        sessionStorage.setItem("id",item.id)
+
                         sessionStorage.setItem("id",item.id)
                         window.location.reload()
                     }

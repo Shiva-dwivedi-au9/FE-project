@@ -1,0 +1,44 @@
+.review{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    color: #DCDCDC;
+}
+.review input{
+    text-align: center;
+    width: 50%;
+    font-size: 25px;
+    height: 250px;
+    color: teal;
+}
+.review button {
+    width: 200px;
+    font-size: 20px;
+}
+
+@media only screen and (max-width:800px) {
+    /* For tablets: */
+    .review{
+        display: block;
+    }
+    .review input{
+        text-align: center;
+        width: 50%;
+        font-size: 15px;
+        height: 100px;
+        color: teal;
+    }
+}
+  @media only screen and (max-width:500px) {
+    /* For mobile phones: */
+   .review{
+        display: block;
+   }
+   .review input{
+    text-align: center;
+    width: 50%;
+    font-size: 15px;
+    height: 100px;
+    color: teal;
+}
+  }

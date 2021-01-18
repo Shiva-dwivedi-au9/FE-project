@@ -33,20 +33,51 @@ export class SearchHeader extends Component {
     renderSuggestions = (data) => {
         if(data) {
             return data.results.map((item) => {
-                const viewMore = (e) => {
+                const viewMovie = (e) => {
+
+                    const New_val  ={ 'id' : item.id , 'img' : item.poster_path , 'name' :  item.original_name || item.title}
+
+                    if (localStorage.getItem("movieList") == null) {
+                        localStorage.setItem("movieList" , '[]')
+                    }
+          
+                    var Old_val = JSON.parse(localStorage.getItem("movieList"))
+                    Old_val.push(New_val)
+          
+                    localStorage.setItem("movieList" , JSON.stringify(Old_val))
+
                     sessionStorage.setItem("id",item.id)
-                    sessionStorage.setItem("tvid",item.id)
-                    sessionStorage.setItem("seriesName",item.title || item.name)
+                   
                     // if(window.location.pathname.split("/")[1] == "details" || window.location.pathname.split("/")[1] == "info"){
                         // window.location.reload()
                     // }
                     this.setState({val:""})
                     this.setState({suggestions:""})
                 }
+
+                const viewTv = (e) => {
+                    const New_val  ={ 'tvid' : item.id , 'img' : item.poster_path , 'name' :  item.original_name || item.title}
+
+                    if (localStorage.getItem("TVList") == null) {
+                        localStorage.setItem("TVList" , '[]')
+                    }
+
+                    var Old_val = JSON.parse(localStorage.getItem("TVList"))
+                    Old_val.push(New_val)
+
+                    localStorage.setItem("TVList" , JSON.stringify(Old_val))
+                    
+
+                    sessionStorage.setItem("tvid",item.id)
+                    sessionStorage.setItem("seriesName",item.title || item.name)
+                    this.setState({val:""})
+                    this.setState({suggestions:""})
+                }
+
                 return(
                     <div style={{width:"400px",textAlign:"center"}}>
-                     { item.media_type == "movie" &&  <Link onClick={viewMore} to={`/details/${item.id}`} target="_blank"><h4>{item.name} {item.title}</h4></Link> }
-                    {  item.media_type == "tv" &&  <Link onClick={viewMore} to={`/info/${item.id}`} target="_blank"><h4>{item.name}{item.title}</h4></Link> }
+                     { item.media_type == "movie" &&  <Link onClick={viewMovie} to={`/details/${item.id}`} target="_blank"><h4>{item.name} {item.title}</h4></Link> }
+                    {  item.media_type == "tv" &&  <Link onClick={viewTv} to={`/info/${item.id}`} target="_blank"><h4>{item.name}{item.title}</h4></Link> }
                     </div>
                                        
                 )
