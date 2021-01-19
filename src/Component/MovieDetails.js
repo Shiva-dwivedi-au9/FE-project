@@ -8,28 +8,51 @@ import 'react-tabs/style/react-tabs.css';
 import StarRatings from 'react-star-ratings';
 import ModalVideo from 'react-modal-video'
 import '../Modal.scss'
+import FavoriteIcon from '@material-ui/icons/Favorite';
 
 const api_key = "api_key=76a3351cce68be3d7eaa350f43ad5644"
 const TrailerUrl = "https://api.themoviedb.org/3/movie/"
 const YoutubeUrl = "https://www.youtube.com/embed/"
 const ImgUrl = "https://image.tmdb.org/t/p/w500"
 const IMdbURL = "https://www.imdb.com/title/"
+const Favourite = JSON.parse(localStorage.getItem("FavouriteMovie"))
+let x
 
 export default class MovieDetails extends Component {
     constructor(){
         super()
         this.state = {
             videos : "",
+            id : sessionStorage.getItem("id"),
             moreDetails:"",
-            isOpen: false
+            isOpen: false,
+            marked:false,
+            Disabled:""
         }
         this.openModal = this.openModal.bind(this)
+        console.log("disabled" , this.state.Disabled)
     }
     openModal () {
         this.setState({isOpen: true})
       }
     
         renderDetails = (moreDetails) => {
+
+            
+            const setfavorite = (e) => {
+            
+                        const New_val  ={ 'id' : moreDetails.id , 'img' : moreDetails.poster_path , 'name' :  moreDetails.original_name || moreDetails.title}
+                        if (localStorage.getItem("FavouriteMovie") == null) {
+                            localStorage.setItem("FavouriteMovie" , '[]')
+                        }
+              
+                        var Old_val = JSON.parse(localStorage.getItem("FavouriteMovie"))
+        
+                        Old_val.push(New_val)
+                        localStorage.setItem("FavouriteMovie" , JSON.stringify(Old_val))
+                        this.setState({marked:true})
+               
+            }
             
             if(moreDetails) {
                const key = sessionStorage.getItem("itemKey")
@@ -47,6 +70,7 @@ export default class MovieDetails extends Component {
                   <h2 style={{color:"turquoise",fontSize:"30px"}}>{moreDetails.tagline}</h2>
                             <h1 style={{color:"whitesmoke"}}>{moreDetails.title}</h1>
                             <h2 style={{color:"teal",fontWeight:"bold"}}><span style={{color:"silver"}}>Runtime : </span>{moreDetails.runtime} mins</h2>
+
                             <StarRatings
                                     rating={moreDetails.vote_average}
                                     starRatedColor="blue"
@@ -55,17 +79,20 @@ export default class MovieDetails extends Component {
                                     starDimension="40px"
                                     starSpacing="10px"
                             />
+
                             <p style={{color:"#DCDCDC",fontSize:"20px",fontWeight:"bold"}}>{moreDetails.overview}</p>
                             <div>
-                            {  moreDetails.genres.length > 1 &&  <h2 style={{color:"teal",fontWeight:"bold"}}><span style={{color:"silver"}}>Genre : </span>{moreDetails.genres[0].name} {moreDetails.genres[1].name} </h2> }
-                            { moreDetails.genres.length == 1 && <h2 style={{color:"teal",fontWeight:"bold"}}><span style={{color:"silver"}}>Genre : </span>{moreDetails.genres[0].name}</h2>
-}
+                            {  moreDetails.genres.length > 1 ?  <h2 style={{color:"teal",fontWeight:"bold"}}><span style={{color:"silver"}}>Genre : </span>{moreDetails.genres[0].name} {moreDetails.genres[1].name} </h2> : <h2 style={{color:"teal",fontWeight:"bold"}}><span style={{color:"silver"}}>Genre : </span>{moreDetails.genres[0].name}</h2>}
+                    
                             </div>
                             <div style={{display:"flex",justifyContent:"space-between",marginRight:"20px"}}>
                                   <h2 style={{color:"teal",fontWeight:"bold"}}><span style={{color:"silver"}}>Budget : </span>${moreDetails.budget} </h2>
                                   <h2 style={{color:"teal",fontWeight:"bold"}}><span style={{color:"silver"}}>Revenue : </span>${moreDetails.revenue} </h2>
                                   <h2 style={{color:"teal",fontWeight:"bold"}}><span style={{color:"silver"}}>Release Date : </span>{moreDetails.release_date} </h2>
                             </div>
+                            
+                            {this.state.marked == false ? <FavoriteIcon   onClick={setfavorite} style={{ fontSize: 60  ,color:"white"}} /> : <FavoriteIcon   onClick={setfavorite} style={{ fontSize: 60  ,color:"red"}} />}
+                        
                             <h2 style={{color:"teal",fontWeight:"bold"}}><span style={{color:"silver"}}>Original Language : </span>{moreDetails.original_language} </h2>
                             <a style={{color:"silver",fontWeight:"bold",textDecoration:"underline"}} href={`${IMdbURL}${moreDetails.imdb_id}`}>More details on IMdb</a>                   
                   </div>
@@ -96,7 +123,7 @@ export default class MovieDetails extends Component {
         this.props.history.push("/")
     }
     render() {
-        console.log(this.state.moreDetails)
+        console.log("suppose",this.state.Disabled)
         return (
             <div>
 
@@ -134,10 +161,10 @@ export default class MovieDetails extends Component {
     }
 
     componentDidMount(){
-        const id = sessionStorage.getItem("id")
-        URL = TrailerUrl + id +  "/videos?"+ api_key + "&language=en-US"
+      
+        URL = TrailerUrl + this.state.id +  "/videos?"+ api_key + "&language=en-US"
 
-       const  detailUrl = TrailerUrl  + id + "?" + api_key + "&language=en-US"
+       const  detailUrl = TrailerUrl  + this.state.id + "?" + api_key + "&language=en-US"
        
         fetch(URL)
         .then((res) => res.json())

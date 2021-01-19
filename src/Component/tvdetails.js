@@ -9,6 +9,7 @@ import 'react-tabs/style/react-tabs.css';
 import StarRatings from 'react-star-ratings';
 import ModalVideo from 'react-modal-video'
 import '../Modal.scss'
+import FavoriteIcon from '@material-ui/icons/Favorite';
 
 const api_key = "api_key=76a3351cce68be3d7eaa350f43ad5644"
 const TrailerUrl = "https://api.themoviedb.org/3/tv/"
@@ -22,21 +23,38 @@ export default class Tv extends Component {
             videos : "",
             moreDetails:"",
             id : sessionStorage.getItem("tvid") ,
-            isOpen: false
+            isOpen: false,
+            marked : false 
         }
         this.openModal = this.openModal.bind(this)
     }
     openModal () {
         this.setState({isOpen: true})
-      }
+    }
     
-        renderDetails = (moreDetails) => {
-            
-            if(moreDetails) {
-               const key = sessionStorage.getItem("tvkey")
+    renderDetails = (moreDetails) => {
+        const setfavorite = (e) => {
+            const New_val  ={ 'tvid' : moreDetails.id , 'img' : moreDetails.poster_path , 'name' :  moreDetails.original_name || moreDetails.title}
+                
+            if (localStorage.getItem("FavouriteTv") == null) {
+                localStorage.setItem("FavouriteTv" , '[]')
+            }
+  
+            var Old_val = JSON.parse(localStorage.getItem("FavouriteTv"))
+            Old_val.push(New_val)
+  
+            localStorage.setItem("FavouriteTv" , JSON.stringify(Old_val))
+
+               alert("Series Added to Favorites");
                
-              return(
-                 <div className="container"  style={{background:`url(${`${ImgUrl}/${moreDetails.backdrop_path}`})`,backgroundRepeat:"no-repeat",backgroundSize:"cover"}}>
+               this.setState({marked:true})
+            }
+            if(moreDetails) {
+                
+                const key = sessionStorage.getItem("tvkey")
+                
+                return(
+                    <div className="container"  style={{background:`url(${`${ImgUrl}/${moreDetails.backdrop_path}`})`,backgroundRepeat:"no-repeat",backgroundSize:"cover"}}>
                         <ModalVideo channel='youtube' isOpen={this.state.isOpen} videoId={key} onClose={() => this.setState({isOpen: false})} />
                         <div className="sub" style={{overflow:"auto"}}>
                         
@@ -48,6 +66,7 @@ export default class Tv extends Component {
                         <h2 style={{color:"turquoise",fontSize:"30px"}}>{moreDetails.tagline}</h2>
                                     <h1 style={{color:"whitesmoke"}}>{moreDetails.title} {moreDetails.name}</h1>
                                     <h2 style={{color:"teal",fontWeight:"bold"}}><span style={{color:"silver"}}>Episode Runtime : </span>{moreDetails.episode_run_time[0]} mins</h2>
+                                   
                                     <StarRatings
                                             rating={moreDetails.vote_average}
                                             starRatedColor="blue"
@@ -56,11 +75,17 @@ export default class Tv extends Component {
                                             starDimension="40px"
                                             starSpacing="10px"
                                     />
+
                                     <p style={{color:"#DCDCDC",fontSize:"20px",fontWeight:"bold"}}>{moreDetails.overview}</p>
                                     <div style={{display:"flex",justifyContent:"space-between",marginRight:"20px"}}>
                                         <h2 style={{color:"teal",fontWeight:"bold"}}><span style={{color:"silver"}}>Genre : </span>{moreDetails.genres[0].name} </h2>
                                         <h2 style={{color:"teal",fontWeight:"bold"}}><span style={{color:"silver"}}>First Air Date : </span>{moreDetails.first_air_date} </h2>
                                     </div>
+
+                                    {this.state.marked == false && <FavoriteIcon  onClick={setfavorite} style={{ fontSize: 60  ,color:"white"}} />}
+                                    
+                                    {this.state.marked == true && <FavoriteIcon  onClick={setfavorite} style={{ fontSize: 60  ,color:"red"}} />}
+
                                     <h2 style={{color:"teal",fontWeight:"bold"}}><span style={{color:"silver"}}>Seasons : </span>{moreDetails.number_of_seasons} </h2>
                                     <h2 style={{color:"teal",fontWeight:"bold"}}><span style={{color:"silver"}}>Total Episodes : </span>{moreDetails.number_of_episodes} </h2>
                                     <h2 style={{color:"teal",fontWeight:"bold"}}><span style={{color:"silver"}}>Status : </span>{moreDetails.status} </h2>
@@ -90,6 +115,9 @@ export default class Tv extends Component {
             }
             
         }
+
+
+
         handleBack = (e) => {
             sessionStorage.removeItem("tvid")
             this.props.history.push("/")

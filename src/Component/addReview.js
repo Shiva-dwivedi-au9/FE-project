@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import './Review.css'
 
-const url = "http://localhost:8900/review"
+const url = "https://movie-database-b302b-default-rtdb.firebaseio.com/review"
 
 export class addReview extends Component {
 
