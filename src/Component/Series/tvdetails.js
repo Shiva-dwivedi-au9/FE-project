@@ -132,14 +132,14 @@ export default class Tv extends Component {
                 <button onClick={this.handleBack}>Go back</button>
 
                 
-                <Tabs style={{backgroundColor:' rgba(12, 4, 12, 0.719)',backdropFilter:'blur(5px)',color:'white'}}>
+                <Tabs className="tabs" style={{backgroundColor:' rgba(12, 4, 12, 0.719)',backdropFilter:'blur(5px)',color:'white'}}>
                     <TabList>
-                            <Tab  style={{fontSize:"22px",fontWeight:"bold"}}>Seasons</Tab>
-                            <Tab  style={{fontSize:"22px",fontWeight:"bold"}}>Cast</Tab>
-                            <Tab style={{fontSize:"22px",fontWeight:"bold"}}>Trailers and Bloopers</Tab>
-                            <Tab style={{fontSize:"22px",fontWeight:"bold"}}>Recommended Tv Series</Tab>
-                            <Tab style={{fontSize:"22px",fontWeight:"bold"}}>Similar Tv Series</Tab>
-                            <Tab style={{fontSize:"22px",fontWeight:"bold"}}>Series Review</Tab>
+                            <Tab  style={{fontSize:"17px",fontWeight:"bold"}}>Seasons</Tab>
+                            <Tab  style={{fontSize:"17px",fontWeight:"bold"}}>Cast</Tab>
+                            <Tab style={{fontSize:"17px",fontWeight:"bold"}}>Trailers and Bloopers</Tab>
+                            <Tab style={{fontSize:"17px",fontWeight:"bold"}}>Recommended Tv Series</Tab>
+                            <Tab style={{fontSize:"17px",fontWeight:"bold"}}>Similar Tv Series</Tab>
+                            <Tab style={{fontSize:"17px",fontWeight:"bold"}}>Series Review</Tab>
                     </TabList>
 
                     <TabPanel>

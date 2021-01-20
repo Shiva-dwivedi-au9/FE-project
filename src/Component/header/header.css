@@ -36,10 +36,6 @@
   color: white;
 }
 
-.option:nth-child(5){
-  margin-left: 200px;
-}
-
 .option{
   margin: 20px;
 }
@@ -93,7 +89,7 @@
     margin: -5px;
   }
   .option:nth-child(5){
-    margin: -10px;
+    margin: -30px;
   }
   
   .option{

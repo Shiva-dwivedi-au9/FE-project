@@ -22,12 +22,12 @@ export class SeasonDisplay extends Component {
                     sessionStorage.setItem("seasonNo" , item.season_number)
                 }
                 return(
-                    <div className="responsive" style={{backgroundColor:' rgba(12, 4, 12, 0.900)',backdropFilter:'blur(5px)',margin:"10px",width:"400px",height:"700px"}} >
+                    <div className="responsive" style={{backgroundColor:' rgba(12, 4, 12, 0.900)',backdropFilter:'blur(5px)',margin:"10px",width:"300px",height:"600px"}} >
                      
                     <h2  style={{color:"teal",textAlign:"center"}} key={item.id}>{item.name}</h2>
                     <h3 style={{color:"silver",textAlign:"center"}}>Episodes : {item.episode_count}</h3>
                     <h3  style={{color:"teal",textAlign:"center"}}> Aired on : {item.air_date}</h3>
-                    <Link onClick={seasonNum} to={`/season/${this.state.seriesName}/${item.season_number} `} target='_blank'><img style={{margin:"40px",padding:"20px",width:"70%"}} src={`${ImgUrl}/${item.poster_path}`} /> </Link>
+                    <Link onClick={seasonNum} to={`/season/${this.state.seriesName}/${item.season_number} `} target='_blank'><img style={{width:"100%"}} src={`${ImgUrl}/${item.poster_path}`} /> </Link>
                                                                                                                            
                    </div>
                 )

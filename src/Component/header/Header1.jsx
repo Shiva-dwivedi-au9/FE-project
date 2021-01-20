@@ -33,7 +33,7 @@ const Header = () => {
           <Link to="/visited" >Visited</Link>   
           </li>
           <li className="option" onClick={closeMobileMenu}>
-          <Link><GLogin /></Link>    
+          <GLogin />    
           </li>
           <SearchHeader />
         </ul>

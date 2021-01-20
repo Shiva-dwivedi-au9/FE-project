@@ -35,25 +35,25 @@ export default class Popular extends Component {
               sessionStorage.setItem("id",item.id)  
             }
             return(
-              < div className="responsive" style={{backgroundColor:' rgba(12, 4, 12, 0.900)',backdropFilter:'blur(5px)',margin:"10px",width:"400px",height:"100%"}} >
-                 <h2 style={{color:"teal",textAlign:"center"}} key={item.id}>||| {item.original_name}{item.title} |||</h2>
-                <Link onClick={viewMore} to={`/details/${item.id}`}><img style={{margin:"30px",padding:"20px"}} src={`${ImgUrl}/${item.poster_path}`}></img></Link> 
+              <div className="responsive" style={{backgroundColor:' rgba(12, 4, 12, 0.900)',backdropFilter:'blur(5px)',margin:"10px",width:"300px",height:"100%"}} >
+                 <h2 style={{color:"teal",textAlign:"center",fontSize:"20px"}} key={item.id}>{item.original_name}{item.title}</h2>
+                <Link onClick={viewMore} to={`/details/${item.id}`}><img style={{width:"100%"}} src={`${ImgUrl}/${item.poster_path}`}></img></Link> 
                 <div style={{margin:"55px"}}>
-                    <h4><span style={{color:"teal",fontSize:"20px"}}>Popularity : </span>  {item.popularity}</h4> 
-                    <h4><span style={{color:"teal",fontSize:"20px"}}>Release Date : </span> {item.release_date} {item.first_air_date}</h4>
-                    <h4><span style={{color:"teal",fontSize:"20px"}}>Vote Average: </span> </h4> 
+                    <h4><span style={{color:"teal",fontSize:"15px"}}>Popularity : </span>  {item.popularity}</h4> 
+                    <h4><span style={{color:"teal",fontSize:"15px"}}>Release Date : </span> {item.release_date} {item.first_air_date}</h4>
+                    <h4><span style={{color:"teal",fontSize:"15px"}}>Vote Average: </span> </h4> 
                     <StarRatings
                         rating={item.vote_average}
                         starRatedColor="blue"
                         numberOfStars={10}
                         name='rating'
-                        starDimension="25px"
-                        starSpacing="2px"
+                        starDimension="17px"
+                        starSpacing="1px"
                   />
-                    <h4><span style={{color:"teal",fontSize:"20px"}}>Vote Count : </span>{item.vote_count} </h4>
+                    <h4><span style={{color:"teal",fontSize:"15px"}}>Vote Count : </span>{item.vote_count} </h4>
                 </div>
               
-              </ div>
+              </div>
              
             )
           })

@@ -8,11 +8,11 @@ export class Favourite extends Component {
     render() {
         return (
             <div>
-                 <Tabs style={{backgroundColor:' rgba(12, 4, 12, 0.719)',backdropFilter:'blur(5px)',color:'white'}}>
+                 <Tabs className="tabs" style={{backgroundColor:' rgba(12, 4, 12, 0.719)',backdropFilter:'blur(5px)',color:'white'}}>
 
                         <TabList>
-                                <Tab style={{fontSize:"25px",fontWeight:"bold"}}>Movies</Tab>
-                                <Tab style={{fontSize:"25px",fontWeight:"bold"}}>TV Series</Tab>
+                                <Tab style={{fontSize:"17px",fontWeight:"bold"}}>Movies</Tab>
+                                <Tab style={{fontSize:"17px",fontWeight:"bold"}}>TV Series</Tab>
                         </TabList>
 
                         <TabPanel>

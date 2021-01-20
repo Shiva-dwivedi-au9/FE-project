@@ -130,13 +130,13 @@ export default class MovieDetails extends Component {
                 {this.renderDetails(this.state.moreDetails)}
                 <button onClick={this.handleBack}>Go back</button>
                 
-                <Tabs style={{backgroundColor:' rgba(12, 4, 12, 0.719)',backdropFilter:'blur(5px)',color:'white'}}>
+                <Tabs className="tabs" style={{backgroundColor:' rgba(12, 4, 12, 0.719)',backdropFilter:'blur(5px)',color:'white'}}>
                     <TabList>
-                            <Tab  style={{fontSize:"23px",fontWeight:"bold"}}>Cast</Tab>
-                            <Tab style={{fontSize:"23px",fontWeight:"bold"}}>Similar Movies</Tab>
-                            <Tab  style={{fontSize:"23px",fontWeight:"bold"}}>Recommended Movies</Tab>
-                            <Tab  style={{fontSize:"23px",fontWeight:"bold"}}>Videos</Tab>
-                            <Tab  style={{fontSize:"23px",fontWeight:"bold"}}>Reviews</Tab>
+                            <Tab  style={{fontSize:"17px",fontWeight:"bold"}}>Cast</Tab>
+                            <Tab style={{fontSize:"17px",fontWeight:"bold"}}>Similar Movies</Tab>
+                            <Tab  style={{fontSize:"17px",fontWeight:"bold"}}>Recommended Movies</Tab>
+                            <Tab  style={{fontSize:"17px",fontWeight:"bold"}}>Videos</Tab>
+                            <Tab  style={{fontSize:"17px",fontWeight:"bold"}}>Reviews</Tab>
 
                     </TabList>
 

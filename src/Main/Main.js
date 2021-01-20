@@ -8,11 +8,11 @@ import 'react-tabs/style/react-tabs.css';
 export default function Main() {
   return (
     <div>
-      <Tabs>
+      <Tabs className="tabs">
           <TabList>
-                <Tab style={{fontSize:"25px",fontWeight:"bold"}}> Home</Tab>
-                <Tab style={{fontSize:"25px",fontWeight:"bold"}}>Movies</Tab>
-                <Tab style={{fontSize:"25px",fontWeight:"bold"}}>TV Series</Tab>
+                <Tab style={{fontSize:"17px",fontWeight:"bold"}}> Home</Tab>
+                <Tab style={{fontSize:"17px",fontWeight:"bold"}}>Movies</Tab>
+                <Tab style={{fontSize:"17px",fontWeight:"bold"}}>TV Series</Tab>
           </TabList>
 
           <TabPanel>

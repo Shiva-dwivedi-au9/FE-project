@@ -53,9 +53,9 @@ export default class App extends Component {
                 enter={{ transform: 'translate3d(0,0px,0)' }}
                 leave={{ transform: 'translate3d(0,-800px,0)' }}>
                 {item => props => <div style={props}>
-                      < div className="responsive" style={{backgroundColor:' rgba(12, 4, 12, 0.900)',backdropFilter:'blur(5px)',margin:"10px",width:"400px",height:"600px"}} >
-                              <h2 style={{color:"teal",textAlign:"center"}} key={item.id}>||| {item.original_name}{item.title} |||</h2>
-                             <Link onClick={viewMore} to={`/info/${item.id}`}><img style={{margin:"30px",padding:"20px"}} src={`${ImgUrl}/${item.poster_path}`}></img></Link> 
+                      < div className="responsive" style={{backgroundColor:' rgba(12, 4, 12, 0.900)',backdropFilter:'blur(5px)',margin:"10px",width:"300px",height:"500px"}} >
+                              <h2 style={{color:"teal",textAlign:"center"}} key={item.id}>{item.original_name}{item.title}</h2>
+                             <Link onClick={viewMore} to={`/info/${item.id}`}><img style={{width:"100%"}} src={`${ImgUrl}/${item.poster_path}`}></img></Link> 
                         </ div></div>}
           </Transition>
          
@@ -79,7 +79,7 @@ export default class App extends Component {
         }
        
           return(
-            <div className="myButton" style={{backgroundColor:' rgba(12, 4, 12, 0.900)',backdropFilter:'blur(5px)',margin:"9px",width:"150px",cursor:"pointer",borderRadius:"50px",textAlign:"center"}}>
+            <div className="myButton" style={{backgroundColor:' rgba(12, 4, 12, 0.900)',backdropFilter:'blur(5px)',fontSize:"15px",margin:"9px",width:"130px",cursor:"pointer",borderRadius:"40px",textAlign:"center"}}>
                   <h3 onClick={this.handleGenre} style={{padding:"10px",color:"teal"}} key={item.id} value={item.id}>{item.name}</h3>
             </div>
              
@@ -95,12 +95,12 @@ export default class App extends Component {
       
       <div className="main-container">
 
-      <Tabs>
+      <Tabs className="tabs">
                 <TabList>
-                <Tab style={{fontSize:"20px",fontWeight:"bold"}}>All Tv Series</Tab>
-                  <Tab style={{fontSize:"20px",fontWeight:"bold"}}>Airing Today</Tab>
-                  <Tab style={{fontSize:"20px",fontWeight:"bold"}}>Popular Tv-series</Tab>
-                  <Tab style={{fontSize:"20px",fontWeight:"bold"}}>Top Rated Series</Tab>              
+                <Tab style={{fontSize:"17px",fontWeight:"bold"}}>All Tv Series</Tab>
+                  <Tab style={{fontSize:"17px",fontWeight:"bold"}}>Airing Today</Tab>
+                  <Tab style={{fontSize:"17px",fontWeight:"bold"}}>Popular Tv-series</Tab>
+                  <Tab style={{fontSize:"17px",fontWeight:"bold"}}>Top Rated Series</Tab>              
                 </TabList>
 
           <TabPanel>

@@ -69,23 +69,23 @@ img :hover{
 a{
     text-decoration: none;
     color: white;
-    font-size: 22px;
-}
-
-a:hover{
-    font-size: 26px;
-    transition: 0.5s;
+    font-size: 17px;
 }
 h2{
-  font-size: 25px;
+  font-size: 20px;
 }
+a:hover{
+    font-size: 19px;
+    transition: 0.5s;
+}
+
 p{
-  font-size: 23px;
+  font-size: 18px;
 }
 
 h1{
     color: white;
-    font-size: 40px;
+    font-size: 30px;
 }
 
 ::-webkit-scrollbar {
@@ -124,7 +124,7 @@ h1{
       width: 100%;
     }
     h1{
-      font-size: 30px;
+      font-size: 20px;
     }
     
     input::placeholder{
@@ -145,13 +145,13 @@ h1{
       font-size: 15px;
     }
     h1{
-      font-size: 30px;
+      font-size: 25px;
     }
     h2{
-      font-size: 20px;
+      font-size: 15px;
     }
     p{
-      font-size: 16px;
+      font-size: 12px;
     }
   }
   

@@ -27,10 +27,10 @@ export class FavTv extends Component {
                 }
     
                 return (
-                <div className="responsive" style={{backgroundColor:' rgba(12, 4, 12, 0.900)',backdropFilter:'blur(5px)',margin:"10px",width:"400px",height:"100%"}} >
+                <div className="responsive" style={{backgroundColor:' rgba(12, 4, 12, 0.900)',backdropFilter:'blur(5px)',margin:"10px",width:"300px",height:"100%"}} >
                         
                         <h2 style={{color:"#DCDCDC",textAlign:"center"}} >{item.name}</h2>
-                        <Link onClick={viewMore} to={`/info/${item.tvid}`}><img style={{margin:"30px",padding:"20px"}} src={`${ImgUrl}/${item.img}`}></img></Link> 
+                        <Link onClick={viewMore} to={`/info/${item.tvid}`}><img style={{width:"100%"}} src={`${ImgUrl}/${item.img}`}></img></Link> 
                 
                 </div>
                 )
