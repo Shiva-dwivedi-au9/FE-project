@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import { ReactComponent as CloseMenu } from "../assets/x.svg";
 import {Link} from 'react-router-dom'
 import { ReactComponent as MenuIcon } from "../assets/menu.svg";
-import SearchHeader from '../SearchHeader'
+import SearchHeader from '../SearchHeader/SearchHeader'
+import GLogin from '../Login/Glogin'
 import "./header.css";
 
 const Header = () => {
@@ -15,7 +16,7 @@ const Header = () => {
       <div className="logo-nav">
       
         <div className="logo-container">
-        <Link to="/"> <h3>Daily Movie Mania</h3> </Link>   
+        <Link to="/"> <h3 className="daily">Daily Movie Mania</h3> </Link>   
         
         </div>
         <ul className={click ? "nav-options active" : "nav-options"}>
@@ -30,6 +31,9 @@ const Header = () => {
           </li>
           <li className="option" onClick={closeMobileMenu}>
           <Link to="/visited" >Visited</Link>   
+          </li>
+          <li className="option" onClick={closeMobileMenu}>
+          <Link><GLogin /></Link>    
           </li>
           <SearchHeader />
         </ul>

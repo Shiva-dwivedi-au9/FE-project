@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import MovieDisplay from './Component/MovieDisplay'
+import MovieDisplay from '../Component/Movies/MovieDisplay'
 import {Spring} from 'react-spring/renderprops'
 
 const MovieUrl = "https://api.themoviedb.org/3/search/movie?api_key=76a3351cce68be3d7eaa350f43ad5644&language=en-US&page=1&include_adult=false&query="

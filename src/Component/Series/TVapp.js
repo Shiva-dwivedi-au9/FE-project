@@ -3,7 +3,7 @@ import TVsearch from  './TVsearch'
 import Popular from './popularseries';
 import TopRated from './topratedtv';
 import Airing_today from './airingtoday'
-import '../Main.css'
+import  '../../Main/Main.css'
 import {Link} from 'react-router-dom'
 import {Spring} from 'react-spring/renderprops'
 import {Transition} from 'react-spring/renderprops'

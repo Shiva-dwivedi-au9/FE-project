@@ -1,6 +1,6 @@
 import React from 'react'
 import {Spring} from 'react-spring/renderprops'
-import Header1 from './header/Header1'
+import Header1 from './Header1'
 
 export default function Header() {
     return (

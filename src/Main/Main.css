@@ -1,6 +1,6 @@
 
 body{
-    background:url(./Images/back.jpg);
+    background:url(../Images/back.jpg);
     height: 100%;
     content: "";
     background-size: cover;
@@ -31,14 +31,14 @@ body{
 }
 input{
     width: 50%;
-    font-size: 30px;
+    font-size: 25px;
     text-align: center;
     border-radius: 20px;
     margin-top: 30px;
 }
 
 input::placeholder{
-  font-size: 25px;
+  font-size: 23px;
 }
 
 input:focus{
@@ -69,17 +69,23 @@ img :hover{
 a{
     text-decoration: none;
     color: white;
-    font-size: 25px;
+    font-size: 22px;
 }
 
 a:hover{
     font-size: 26px;
     transition: 0.5s;
 }
+h2{
+  font-size: 25px;
+}
+p{
+  font-size: 23px;
+}
 
 h1{
     color: white;
-    font-size: 50px;
+    font-size: 40px;
 }
 
 ::-webkit-scrollbar {
@@ -117,6 +123,9 @@ h1{
     .main,.right{
       width: 100%;
     }
+    h1{
+      font-size: 30px;
+    }
     
     input::placeholder{
       font-size: 15px;
@@ -135,7 +144,15 @@ h1{
     .responsive h4{
       font-size: 15px;
     }
-
+    h1{
+      font-size: 30px;
+    }
+    h2{
+      font-size: 20px;
+    }
+    p{
+      font-size: 16px;
+    }
   }
   
   @media only screen and (max-width:800px) {

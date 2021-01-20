@@ -2,12 +2,12 @@ import React, { Component } from 'react'
 import SimilarMovies from './SimilarMovies'
 import Movies from './RecommendedMovies'
 import Credit from './MovieCredits'
-import MovieReviews from './MovieReviews'
+import MovieReviews from '../Review/MovieReviews'
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import StarRatings from 'react-star-ratings';
 import ModalVideo from 'react-modal-video'
-import '../Modal.scss'
+import '../../Main/Modal.scss'
 import FavoriteIcon from '@material-ui/icons/Favorite';
 
 const api_key = "api_key=76a3351cce68be3d7eaa350f43ad5644"
@@ -67,7 +67,7 @@ export default class MovieDetails extends Component {
                   </div>
                 
                   <div className="right">
-                  <h2 style={{color:"turquoise",fontSize:"30px"}}>{moreDetails.tagline}</h2>
+                  <h2 style={{color:"turquoise"}}>{moreDetails.tagline}</h2>
                             <h1 style={{color:"whitesmoke"}}>{moreDetails.title}</h1>
                             <h2 style={{color:"teal",fontWeight:"bold"}}><span style={{color:"silver"}}>Runtime : </span>{moreDetails.runtime} mins</h2>
 
@@ -80,7 +80,7 @@ export default class MovieDetails extends Component {
                                     starSpacing="10px"
                             />
 
-                            <p style={{color:"#DCDCDC",fontSize:"20px",fontWeight:"bold"}}>{moreDetails.overview}</p>
+                            <p style={{color:"#DCDCDC",fontWeight:"bold"}}>{moreDetails.overview}</p>
                             <div>
                             {  moreDetails.genres.length > 1 ?  <h2 style={{color:"teal",fontWeight:"bold"}}><span style={{color:"silver"}}>Genre : </span>{moreDetails.genres[0].name} {moreDetails.genres[1].name} </h2> : <h2 style={{color:"teal",fontWeight:"bold"}}><span style={{color:"silver"}}>Genre : </span>{moreDetails.genres[0].name}</h2>}
                     
@@ -132,11 +132,11 @@ export default class MovieDetails extends Component {
                 
                 <Tabs style={{backgroundColor:' rgba(12, 4, 12, 0.719)',backdropFilter:'blur(5px)',color:'white'}}>
                     <TabList>
-                            <Tab  style={{fontSize:"25px",fontWeight:"bold"}}>Cast</Tab>
-                            <Tab style={{fontSize:"25px",fontWeight:"bold"}}>Similar Movies</Tab>
-                            <Tab  style={{fontSize:"25px",fontWeight:"bold"}}>Recommended Movies</Tab>
-                            <Tab  style={{fontSize:"25px",fontWeight:"bold"}}>Videos</Tab>
-                            <Tab  style={{fontSize:"25px",fontWeight:"bold"}}>Reviews</Tab>
+                            <Tab  style={{fontSize:"23px",fontWeight:"bold"}}>Cast</Tab>
+                            <Tab style={{fontSize:"23px",fontWeight:"bold"}}>Similar Movies</Tab>
+                            <Tab  style={{fontSize:"23px",fontWeight:"bold"}}>Recommended Movies</Tab>
+                            <Tab  style={{fontSize:"23px",fontWeight:"bold"}}>Videos</Tab>
+                            <Tab  style={{fontSize:"23px",fontWeight:"bold"}}>Reviews</Tab>
 
                     </TabList>
 

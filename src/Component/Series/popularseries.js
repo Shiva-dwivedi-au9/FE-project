@@ -1,22 +1,22 @@
 import React, { Component } from 'react'
-import  '../Main.css'
+import  '../../Main/Main.css'
 import {Link} from 'react-router-dom'
 import StarRatings from 'react-star-ratings';
-import loader from '../Images/loader.gif'
-const TopRatedUrl = "https://api.themoviedb.org/3/tv/airing_today?api_key=76a3351cce68be3d7eaa350f43ad5644&language=en-US&page=1"
+import loader from '../../Images/loader.gif'
+const PopularURL = "https://api.themoviedb.org/3/tv/popular?api_key=76a3351cce68be3d7eaa350f43ad5644&language=en-US&page=1"
 const ImgUrl = "https://image.tmdb.org/t/p/w300"
 
 
-export default class TopRated extends Component {
+export default class Popular extends Component {
 
     constructor(){
         super()
         this.state = {
-            toprated:""
+            popular:""
         }
       }
 
-      renderTopRated=(data) => {
+      renderPopular=(data) => {
         if(data){
           return data.results.map((item) => {
             const  viewMore = (e) =>{
@@ -32,6 +32,7 @@ export default class TopRated extends Component {
 
                 localStorage.setItem("TVList" , JSON.stringify(Old_val))
 
+                
               sessionStorage.setItem("tvid",item.id)  
               sessionStorage.setItem("seriesName",item.title || item.original_name)
 
@@ -73,17 +74,17 @@ export default class TopRated extends Component {
         return (
             <div className="trending">
                      <div  style={{display:"flex",flexWrap:"wrap",justifyContent:"center",alignItems:"center"}}>
-                    {this.renderTopRated(this.state.toprated)}
+                    {this.renderPopular(this.state.popular)}
             </div>
             </div>
         )
     }
 
     componentDidMount(){
-        fetch(TopRatedUrl)
+        fetch(PopularURL)
         .then((res)=>res.json())
         .then((data) => {
-          this.setState({toprated:data})
+          this.setState({popular:data})
       })
 
     }

@@ -1,17 +1,40 @@
 import React, { Component } from 'react'
-import Review from './addReview'
+import './Review.css'
 
-const Movie = "https://api.themoviedb.org/3/movie/"
+const verify = localStorage.getItem("loggedin")
+const Series = "https://api.themoviedb.org/3/tv/"
 const ReviewUrl = "/reviews?api_key=76a3351cce68be3d7eaa350f43ad5644&language=en-US&page=1"
-const url = " http://localhost:8900/review/"
+const SeriesReview =  "http://localhost:8900/SeriesReview/"
+const url1 = " http://localhost:8900/SeriesReview"
 
-export class MovieReviews extends Component {
+export class SeriesReviews extends Component {
     constructor() {
         super()
         this.state = {
+            id:sessionStorage.getItem("id"),
+            name:sessionStorage.getItem("UDetails"),
+            review:"",
             reviews : "",
             userReview:""
         }
+    }
+
+    handleChange = (e) => {
+        this.setState({review : e.target.value})
+    }
+
+    handleSubmit =() => {
+        console.log(this.state)
+        fetch(url1,{
+            method:'POST',
+            headers:{
+                'Accept':'application/json',
+                'Content-Type':'application/json'
+            },
+            body:JSON.stringify( {id:this.state.id , name:this.state.name , review: this.state.review})
+        })
+        this.setState({review:""})
+
     }
 
     renderUserReview = (data) => {
@@ -43,33 +66,52 @@ export class MovieReviews extends Component {
                )
            })
        }
+       else{
+           return(
+                   <h3 style={{textAlign:"center"}}>No Review found for this series</h3>
+           )
+       }
     }
     render() {
-        console.log("userreview", this.state.userReview)
+    
         return (
             <div>
-                <Review />
-                {this.renderUserReview(this.state.userReview)}
+            <>
+            { verify === "true" ? <div className="review">
+            <h2>Add your review :</h2>
+            <input onChange={this.handleChange} value={this.state.review} type="text" placeholder="EXPRESS YOUR FEELINGS FOR THIS SERIES" />
+            <button onClick={this.handleSubmit}>Add Review</button>
+        </div> : <h1  className="condition">Please Login to write your review</h1>}
+
+             {this.renderUserReview(this.state.userReview)} 
+               
+                </>
+    
                 {this.renderReviews(this.state.reviews)}
             </div>
         )
     }
 
 componentDidMount() {
-    const id = sessionStorage.getItem("id")
-    const FinalUrl = Movie + id + ReviewUrl
+    const id = sessionStorage.getItem("tvid")
+    const FinalUrl = Series + id + ReviewUrl
 
     fetch(FinalUrl)
     .then((res) => res.json())
     .then((data) => this.setState({reviews:data}) )
+}
 
-    const UserURL = url + id
+componentDidUpdate(){
+    const id = sessionStorage.getItem("id")
+    const UserURL = SeriesReview + id
     fetch(UserURL)
     .then((res) => res.json())
-    .then((data) => this.setState({userReview:data}))
+    .then((data) =>
+    setTimeout(
+        () =>  this.setState({userReview:data})), 
+        200
+  );
+}
 }
 
-    
-}
-
-export default MovieReviews
+export default SeriesReviews

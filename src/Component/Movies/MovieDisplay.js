@@ -1,31 +1,31 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 import StarRatings from 'react-star-ratings';
-import '../Main.css'
+import '../../Main/Main.css'
 const ImgUrl = "https://image.tmdb.org/t/p/w300"
  
 
-export default function TVDisplay(props) {
+export default function MovieDisplay(props) {
 
-    const renderTVshows = ({display}) => {
+    const renderMovies = ({display}) => {
         if(display) {
                 return display.results.map((item) => {
                     const  viewMore = (e) =>{
 
-                        const New_val  ={ 'tvid' : item.id , 'img' : item.poster_path , 'name' :  item.original_name || item.title}
+                        const New_val  ={ 'id' : item.id , 'img' : item.poster_path , 'name' : item.title || item.original_name}
 
-                        if (localStorage.getItem("TVList") == null) {
-                            localStorage.setItem("TVList" , '[]')
+                        if (localStorage.getItem("movieList") == null) {
+                            localStorage.setItem("movieList" , '[]')
                         }
-
-                        var Old_val = JSON.parse(localStorage.getItem("TVList"))
+              
+                        var Old_val = JSON.parse(localStorage.getItem("movieList"))
                         Old_val.push(New_val)
+              
+                        localStorage.setItem("movieList" , JSON.stringify(Old_val))
+    
+                        sessionStorage.setItem("id",item.id)
 
-                        localStorage.setItem("TVList" , JSON.stringify(Old_val))
-                        
-
-                        sessionStorage.setItem("tvid",item.id)
-                        sessionStorage.setItem("seriesName",item.title || item.original_name)
+                        sessionStorage.setItem("id",item.id)
                         window.location.reload()
                     }
                   return(
@@ -52,10 +52,11 @@ export default function TVDisplay(props) {
                                                             
                                                             <h2 style={{color:"teal",fontWeight:"bold"}}><span style={{color:"silver"}}>Vote Count : </span>{item.vote_count}</h2>
                                                             <h2 style={{color:"teal",fontWeight:"bold"}}><span style={{color:"silver"}}>Release Date :  </span>{item.release_date}{item.first_air_date}</h2>
-                                                            <button onClick={viewMore} value={item.id}><Link to={`/info/${item.id}`}>View</Link></button>
+                                                            <button onClick={viewMore} value={item.id}><Link to={`/details/${item.id}`}>View</Link></button>
                             </div>
                             </div>
                     </div>
+                   
                   )
                  
                 })
@@ -67,9 +68,8 @@ export default function TVDisplay(props) {
     return (
         <div >
             <div   style={{display:"flex",flexWrap:"wrap"}}>
-                   {renderTVshows(props)}
+                   {renderMovies(props)}
             </div>
         </div>
     )
 }
-

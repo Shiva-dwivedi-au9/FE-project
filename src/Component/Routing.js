@@ -1,17 +1,16 @@
 import React from 'react'
 import {BrowserRouter , Route} from 'react-router-dom'
-import Header from './Header'
-import Footer from './Footer'
-import Contact from './Contact'
-import Home from '../Home'
-import Trending from './Trending'
-import MovieDetails from './MovieDetails'
-import SeriesDetails from './tvdetails'
+import Header from './header/Header'
+import Footer from './Footer/Footer'
+import Home from '../Main/Home'
+import Trending from './Trending/Trending'
+import MovieDetails from './Movies/MovieDetails'
+import SeriesDetails from './Series/tvdetails'
 import App from '../App'
-import TVapp from './TVapp'
-import Seasondetail from './Seasondetail'
-import Visited from './Visited'
-import Favourite from './Favourite'
+import TVapp from './Series/TVapp'
+import Seasondetail from './Series/Seasondetail'
+import Visited from './Visited/Visited'
+import Favourite from './favourites/Favourite'
 
 export default function Routing() {
     return (
@@ -20,7 +19,6 @@ export default function Routing() {
                 <Header/>
 
                     <Route exact path="/" component={Home} />
-                    <Route path="/contact" component={Contact} />
                     <Route path="/info/:tvid" component={SeriesDetails} />
                     <Route path="/trending" component={Trending} />
                     <Route path="/details/:id" component={MovieDetails} />

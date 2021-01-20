@@ -1,31 +1,31 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 import StarRatings from 'react-star-ratings';
-import '../Main.css'
+import  '../../Main/Main.css'
 const ImgUrl = "https://image.tmdb.org/t/p/w300"
  
 
-export default function MovieDisplay(props) {
+export default function TVDisplay(props) {
 
-    const renderMovies = ({display}) => {
+    const renderTVshows = ({display}) => {
         if(display) {
                 return display.results.map((item) => {
                     const  viewMore = (e) =>{
 
-                        const New_val  ={ 'id' : item.id , 'img' : item.poster_path , 'name' : item.title || item.original_name}
+                        const New_val  ={ 'tvid' : item.id , 'img' : item.poster_path , 'name' :  item.original_name || item.title}
 
-                        if (localStorage.getItem("movieList") == null) {
-                            localStorage.setItem("movieList" , '[]')
+                        if (localStorage.getItem("TVList") == null) {
+                            localStorage.setItem("TVList" , '[]')
                         }
-              
-                        var Old_val = JSON.parse(localStorage.getItem("movieList"))
-                        Old_val.push(New_val)
-              
-                        localStorage.setItem("movieList" , JSON.stringify(Old_val))
-    
-                        sessionStorage.setItem("id",item.id)
 
-                        sessionStorage.setItem("id",item.id)
+                        var Old_val = JSON.parse(localStorage.getItem("TVList"))
+                        Old_val.push(New_val)
+
+                        localStorage.setItem("TVList" , JSON.stringify(Old_val))
+                        
+
+                        sessionStorage.setItem("tvid",item.id)
+                        sessionStorage.setItem("seriesName",item.title || item.original_name)
                         window.location.reload()
                     }
                   return(
@@ -52,11 +52,10 @@ export default function MovieDisplay(props) {
                                                             
                                                             <h2 style={{color:"teal",fontWeight:"bold"}}><span style={{color:"silver"}}>Vote Count : </span>{item.vote_count}</h2>
                                                             <h2 style={{color:"teal",fontWeight:"bold"}}><span style={{color:"silver"}}>Release Date :  </span>{item.release_date}{item.first_air_date}</h2>
-                                                            <button onClick={viewMore} value={item.id}><Link to={`/details/${item.id}`}>View</Link></button>
+                                                            <button onClick={viewMore} value={item.id}><Link to={`/info/${item.id}`}>View</Link></button>
                             </div>
                             </div>
                     </div>
-                   
                   )
                  
                 })
@@ -68,8 +67,9 @@ export default function MovieDisplay(props) {
     return (
         <div >
             <div   style={{display:"flex",flexWrap:"wrap"}}>
-                   {renderMovies(props)}
+                   {renderTVshows(props)}
             </div>
         </div>
     )
 }
+

@@ -75,7 +75,7 @@ export class SearchHeader extends Component {
                 }
 
                 return(
-                    <div style={{width:"400px",textAlign:"center"}}>
+                    <div style={{width:"380px",textAlign:"center"}}>
                      { item.media_type == "movie" &&  <Link onClick={viewMovie} to={`/details/${item.id}`} target="_blank"><h4>{item.name} {item.title}</h4></Link> }
                     {  item.media_type == "tv" &&  <Link onClick={viewTv} to={`/info/${item.id}`} target="_blank"><h4>{item.name}{item.title}</h4></Link> }
                     </div>

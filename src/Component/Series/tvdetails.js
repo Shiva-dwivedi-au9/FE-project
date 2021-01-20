@@ -2,13 +2,13 @@ import React, { Component } from 'react'
 import Credit from './tvcredits'
 import Similar from './similarseries'
 import Recommended from './RecommendedSeries'
-import SeriesReviews from './SeriesReview'
+import SeriesReviews from '../Review/SeriesReview'
 import SeasonDisplay from './SeasonDisplay'
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import StarRatings from 'react-star-ratings';
 import ModalVideo from 'react-modal-video'
-import '../Modal.scss'
+import '../../Main/Modal.scss'
 import FavoriteIcon from '@material-ui/icons/Favorite';
 
 const api_key = "api_key=76a3351cce68be3d7eaa350f43ad5644"
@@ -63,7 +63,7 @@ export default class Tv extends Component {
                         </div>
                         
                         <div className="right">
-                        <h2 style={{color:"turquoise",fontSize:"30px"}}>{moreDetails.tagline}</h2>
+                        <h2 style={{color:"turquoise"}}>{moreDetails.tagline}</h2>
                                     <h1 style={{color:"whitesmoke"}}>{moreDetails.title} {moreDetails.name}</h1>
                                     <h2 style={{color:"teal",fontWeight:"bold"}}><span style={{color:"silver"}}>Episode Runtime : </span>{moreDetails.episode_run_time[0]} mins</h2>
                                    
@@ -76,7 +76,7 @@ export default class Tv extends Component {
                                             starSpacing="10px"
                                     />
 
-                                    <p style={{color:"#DCDCDC",fontSize:"20px",fontWeight:"bold"}}>{moreDetails.overview}</p>
+                                    <p style={{color:"#DCDCDC",fontWeight:"bold"}}>{moreDetails.overview}</p>
                                     <div style={{display:"flex",justifyContent:"space-between",marginRight:"20px"}}>
                                         <h2 style={{color:"teal",fontWeight:"bold"}}><span style={{color:"silver"}}>Genre : </span>{moreDetails.genres[0].name} </h2>
                                         <h2 style={{color:"teal",fontWeight:"bold"}}><span style={{color:"silver"}}>First Air Date : </span>{moreDetails.first_air_date} </h2>
@@ -134,12 +134,12 @@ export default class Tv extends Component {
                 
                 <Tabs style={{backgroundColor:' rgba(12, 4, 12, 0.719)',backdropFilter:'blur(5px)',color:'white'}}>
                     <TabList>
-                            <Tab  style={{fontSize:"25px",fontWeight:"bold"}}>Seasons</Tab>
-                            <Tab  style={{fontSize:"25px",fontWeight:"bold"}}>Cast</Tab>
-                            <Tab style={{fontSize:"25px",fontWeight:"bold"}}>Trailers and Bloopers</Tab>
-                            <Tab style={{fontSize:"25px",fontWeight:"bold"}}>Recommended Tv Series</Tab>
-                            <Tab style={{fontSize:"25px",fontWeight:"bold"}}>Similar Tv Series</Tab>
-                            <Tab style={{fontSize:"25px",fontWeight:"bold"}}>Series Review</Tab>
+                            <Tab  style={{fontSize:"22px",fontWeight:"bold"}}>Seasons</Tab>
+                            <Tab  style={{fontSize:"22px",fontWeight:"bold"}}>Cast</Tab>
+                            <Tab style={{fontSize:"22px",fontWeight:"bold"}}>Trailers and Bloopers</Tab>
+                            <Tab style={{fontSize:"22px",fontWeight:"bold"}}>Recommended Tv Series</Tab>
+                            <Tab style={{fontSize:"22px",fontWeight:"bold"}}>Similar Tv Series</Tab>
+                            <Tab style={{fontSize:"22px",fontWeight:"bold"}}>Series Review</Tab>
                     </TabList>
 
                     <TabPanel>

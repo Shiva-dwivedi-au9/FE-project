@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
-import  '../Main.css'
+import  '../../Main/Main.css'
 import {Link} from 'react-router-dom'
 import StarRatings from 'react-star-ratings';
-import loader from '../Images/loader.gif'
+import loader from '../../Images/loader.gif'
 
 
 const TrendingUrl = "https://api.themoviedb.org/3/trending/all/day?api_key=76a3351cce68be3d7eaa350f43ad5644"
