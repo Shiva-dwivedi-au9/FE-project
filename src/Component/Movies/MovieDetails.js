@@ -85,7 +85,7 @@ export default class MovieDetails extends Component {
                             {  moreDetails.genres.length > 1 ?  <h2 style={{color:"teal",fontWeight:"bold"}}><span style={{color:"silver"}}>Genre : </span>{moreDetails.genres[0].name} {moreDetails.genres[1].name} </h2> : <h2 style={{color:"teal",fontWeight:"bold"}}><span style={{color:"silver"}}>Genre : </span>{moreDetails.genres[0].name}</h2>}
                     
                             </div>
-                            <div style={{display:"flex",justifyContent:"space-between",marginRight:"20px"}}>
+                            <div style={{display:"flex",justifyContent:"space-between"}}>
                                   <h2 style={{color:"teal",fontWeight:"bold"}}><span style={{color:"silver"}}>Budget : </span>${moreDetails.budget} </h2>
                                   <h2 style={{color:"teal",fontWeight:"bold"}}><span style={{color:"silver"}}>Revenue : </span>${moreDetails.revenue} </h2>
                                   <h2 style={{color:"teal",fontWeight:"bold"}}><span style={{color:"silver"}}>Release Date : </span>{moreDetails.release_date} </h2>
