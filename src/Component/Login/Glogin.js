@@ -24,7 +24,11 @@ const status = localStorage.getItem("loggedin")
 
         logout = () => {
             localStorage.removeItem('udetails');
-            localStorage.removeItem("loggedin" , "false")
+            localStorage.removeItem("loggedin")
+            localStorage.removeItem("movieList")
+            localStorage.removeItem("TVList")
+            localStorage.removeItem("FavouriteMovie")
+            localStorage.removeItem("FavouriteTv")
             window.location.reload()
         }
 

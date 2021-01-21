@@ -15,8 +15,7 @@ const TrailerUrl = "https://api.themoviedb.org/3/movie/"
 const YoutubeUrl = "https://www.youtube.com/embed/"
 const ImgUrl = "https://image.tmdb.org/t/p/w500"
 const IMdbURL = "https://www.imdb.com/title/"
-const Favourite = JSON.parse(localStorage.getItem("FavouriteMovie"))
-let x
+const status = localStorage.getItem("loggedin")
 
 export default class MovieDetails extends Component {
     constructor(){
@@ -91,7 +90,13 @@ export default class MovieDetails extends Component {
                                   <h2 style={{color:"teal",fontWeight:"bold"}}><span style={{color:"silver"}}>Release Date : </span>{moreDetails.release_date} </h2>
                             </div>
                             
-                            {this.state.marked == false ? <FavoriteIcon   onClick={setfavorite} style={{ fontSize: 60  ,color:"white"}} /> : <FavoriteIcon   onClick={setfavorite} style={{ fontSize: 60  ,color:"red"}} />}
+                            { status == "true" ? 
+                                this.state.marked == false ? <FavoriteIcon   onClick={setfavorite} style={{ fontSize: 60  ,color:"white"}} /> : <FavoriteIcon   onClick={setfavorite} style={{ fontSize: 60  ,color:"red"}} />
+
+                                :
+                                <h2 style={{color:"red"}}>Please login to mark this as your Favorite</h2>
+                            }
+                           
                         
                             <h2 style={{color:"teal",fontWeight:"bold"}}><span style={{color:"silver"}}>Original Language : </span>{moreDetails.original_language} </h2>
                             <a style={{color:"silver",fontWeight:"bold",textDecoration:"underline"}} href={`${IMdbURL}${moreDetails.imdb_id}`}>More details on IMdb</a>                   

@@ -15,6 +15,7 @@ const api_key = "api_key=76a3351cce68be3d7eaa350f43ad5644"
 const TrailerUrl = "https://api.themoviedb.org/3/tv/"
 const YoutubeUrl = "https://www.youtube.com/embed/"
 const ImgUrl = "https://image.tmdb.org/t/p/w500"
+const status = localStorage.getItem("loggedin")
 
 export default class Tv extends Component {
     constructor(){
@@ -82,9 +83,13 @@ export default class Tv extends Component {
                                         <h2 style={{color:"teal",fontWeight:"bold"}}><span style={{color:"silver"}}>First Air Date : </span>{moreDetails.first_air_date} </h2>
                                     </div>
 
-                                    {this.state.marked == false && <FavoriteIcon  onClick={setfavorite} style={{ fontSize: 60  ,color:"white"}} />}
-                                    
-                                    {this.state.marked == true && <FavoriteIcon  onClick={setfavorite} style={{ fontSize: 60  ,color:"red"}} />}
+                                    { status == "true" ? 
+                                        this.state.marked == false ? <FavoriteIcon   onClick={setfavorite} style={{ fontSize: 60  ,color:"white"}} /> : <FavoriteIcon   onClick={setfavorite} style={{ fontSize: 60  ,color:"red"}} />
+
+                                        :
+                                        <h2 style={{color:"red"}}>Please login to mark this as your Favorite</h2>
+                                    }
+                           
 
                                     <h2 style={{color:"teal",fontWeight:"bold"}}><span style={{color:"silver"}}>Seasons : </span>{moreDetails.number_of_seasons} </h2>
                                     <h2 style={{color:"teal",fontWeight:"bold"}}><span style={{color:"silver"}}>Total Episodes : </span>{moreDetails.number_of_episodes} </h2>

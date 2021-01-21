@@ -6,6 +6,8 @@ import SearchHeader from '../SearchHeader/SearchHeader'
 import GLogin from '../Login/Glogin'
 import "./header.css";
 
+const status = localStorage.getItem("loggedin")
+
 const Header = () => {
   const [click, setClick] = useState(false);
   const handleClick = () => setClick(!click);
@@ -26,12 +28,14 @@ const Header = () => {
           <li className="option" onClick={closeMobileMenu}>
           <Link to="/series" >Series</Link>   
           </li>
-          <li className="option" onClick={closeMobileMenu}>
+
+          {status == "true" && <><li className="option" onClick={closeMobileMenu}>
           <Link to="/favourite" >Favourites</Link>   
-          </li>
+          </li> 
           <li className="option" onClick={closeMobileMenu}>
           <Link to="/visited" >Visited</Link>   
-          </li>
+          </li></>}
+          
           <li className="option" onClick={closeMobileMenu}>
           <GLogin />    
           </li>
