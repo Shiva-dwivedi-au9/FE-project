@@ -1,8 +1,31 @@
 {
   "MovieReview": [
-   
+    {
+      "id": "560144",
+      "name": "Shiva Dwivedi",
+      "review": "PRETTY GOOD!1"
+    },
+    {
+      "id": "464052",
+      "name": "Shiva Dwivedi",
+      "review": "NOT UPTO THE BAR THE FIRST ONE SET"
+    },
+    {
+      "id": "414906",
+      "name": "Shiva Dwivedi",
+      "review": "cannot wait to watch this one"
+    }
   ],
   "SeriesReview": [
-    
+    {
+      "id": "155",
+      "name": "Shiva Dwivedi",
+      "review": "GREAT SERIES!!!!!!!!!"
+    },
+    {
+      "id": "414906",
+      "name": "Shiva Dwivedi",
+      "review": "lol terrible"
+    }
   ]
 }
